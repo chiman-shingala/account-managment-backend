@@ -29,7 +29,7 @@ namespace Acc.Data.Repositories
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_CompMastSave", compMast);
 		}
-		public async Task<int> DeleteColour(string Comp_Code)
+		public async Task<int> DeleteCompany(string Comp_Code)
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_UtilCompMastCompDel", new { Comp_Code });
 		}

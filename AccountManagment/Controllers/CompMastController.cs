@@ -1,12 +1,14 @@
 ﻿using Acc.Services.Common;
 using Acc.Services.Interfaces;
 using Acc.Shared.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace Acc.Api.Controllers
 {
+	[Authorize]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CompMastController : ControllerBase
@@ -35,7 +37,7 @@ namespace Acc.Api.Controllers
 		[HttpDelete("delete-company")]
 		public async Task<IActionResult> DeleteCompany([FromQuery] string Comp_Code)
 		{
-			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _compMast.DeleteColour(Comp_Code), CommonConstants.SUCCESS));
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _compMast.DeleteCompany(Comp_Code), CommonConstants.SUCCESS));
 		}
 	}
 }

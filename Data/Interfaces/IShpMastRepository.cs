@@ -12,6 +12,6 @@ namespace Acc.Data.Interfaces
 		Task<List<ShpMastDto>> GetAllShape();
 		Task<int> AddShape(ShpMastDto shpMast);
 		Task<int> UpdateShape(ShpMastDto shpMast);
-		Task<int> DeletePurity(string Q_Code);
+		Task<int> DeleteShape(string Q_Code);
 	}
 }

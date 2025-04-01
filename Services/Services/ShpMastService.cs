@@ -31,7 +31,7 @@ namespace Acc.Services.Services
 		}
 		public async Task<int> DeleteShape(string S_Code)
 		{
-			return await _shpMast.DeletePurity(S_Code);
+			return await _shpMast.DeleteShape(S_Code);
 		}
 	}
 }
