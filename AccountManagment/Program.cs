@@ -1,3 +1,4 @@
+using Acc.Api.Extensions;
 using Acc.Data.Interfaces;
 using Acc.Data.Repositories;
 using Acc.Data.Repository.Interface;
@@ -62,39 +63,7 @@ builder.Services.AddDbContext<DratnaContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("AccountSystem")));
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddScoped<IDRepository, DRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IColMastRepository, ColMastRepository>();
-builder.Services.AddScoped<IColMastService, ColMastService>();
-builder.Services.AddScoped<ICutMastRepository, CutMastRepository>();
-builder.Services.AddScoped<ICutMastService, CutMastService>();
-builder.Services.AddScoped<IPurityMastRepository, PurityMastRepository>();
-builder.Services.AddScoped<IPurityService, PurityService>();
-builder.Services.AddScoped<IShpMastRepository, ShpMastRepository>();
-builder.Services.AddScoped<IShpMastService, ShpMastService>();
-builder.Services.AddScoped<ISizeMastRepository, SizeMastRepository>();
-builder.Services.AddScoped<ISizeMastService, SizeMastService>();
-builder.Services.AddScoped<IGrpMastRepository, GrpMastRepository>();
-builder.Services.AddScoped<IGrpMastService, GrpMastService>();
-builder.Services.AddScoped<IAccYearRepository, AccYearRepository>();
-builder.Services.AddScoped<IAccYearService, AccYearService>();
-builder.Services.AddScoped<IAGrpMastRepository, AGrpMastRepository>();
-builder.Services.AddScoped<IAGrpMastService, AGrpMastService>();
-builder.Services.AddScoped<ICurrMastRepository, CurrMastRepository>();
-builder.Services.AddScoped<ICurrMastService, CurrMastService>();
-builder.Services.AddScoped<ICompMastRepository, CompMastRepository>();
-builder.Services.AddScoped<ICompMastService, CompMastService>();
-builder.Services.AddScoped<IPktGroupRepository,PktGroupRepository>();
-builder.Services.AddScoped<IPktGroupService, PktGroupService>();
-builder.Services.AddScoped<IParMastRepository,ParMastRepository>();
-builder.Services.AddScoped<IParMastService, ParMastService>();
-builder.Services.AddScoped<IPCompMastRepository,PCompMastRepository>();
-builder.Services.AddScoped<IPCompMastService,PCompMastService>();
-builder.Services.AddScoped<ICertMastRepository,CertMastRepository>();
-builder.Services.AddScoped<ICertMastService,CertMastService>();
-builder.Services.AddScoped<IPersonMastRepository , PersonMastRepository>();
-builder.Services.AddScoped<IPersonMastService , PersonMastService>();
+builder.Services.RegisterApplicationServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

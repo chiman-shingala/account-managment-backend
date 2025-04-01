@@ -21,7 +21,7 @@ namespace Acc.Services.Services
 		{
 			return await _parMast.GetAllParMast(parMastFill);
 		}
-		public async Task<int> AddParMasr(ParMastDto parMast)
+		public async Task<int> AddParMast(ParMastDto parMast)
 		{
 			return await _parMast.AddParMast(parMast);
 		}
@@ -29,7 +29,7 @@ namespace Acc.Services.Services
 		{
 			return await _parMast.UpdateParMast(parMast);
 		}
-		public async Task<int> DeleteGrp(string P_Code, int Acyear, string Comp_Code)
+		public async Task<int> DeleteParMast(string P_Code, int Acyear, string Comp_Code)
 		{
 			return await _parMast.DeleteParMast(P_Code,Acyear,Comp_Code);
 		}

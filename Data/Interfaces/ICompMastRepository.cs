@@ -12,6 +12,6 @@ namespace Acc.Data.Interfaces
 		Task<List<CompMastDto>> GetAllCompany(string UserId);
 		Task<int> AddCompany(CompMastDto compMast);
 		Task<int> UpdateCompany(CompMastDto compMast);
-		Task<int> DeleteColour(string Comp_Code);
+		Task<int> DeleteCompany(string Comp_Code);
 	}
 }

@@ -29,9 +29,9 @@ namespace Acc.Services.Services
 		{
 			return await _compMast.UpdateCompany(compMast);
 		}
-		public async Task<int> DeleteColour(string Comp_Code)
+		public async Task<int> DeleteCompany(string Comp_Code)
 		{
-			return await _compMast.DeleteColour(Comp_Code);
+			return await _compMast.DeleteCompany(Comp_Code);
 		}
 	}
 }

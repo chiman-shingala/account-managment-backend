@@ -1,0 +1,17 @@
+﻿using Acc.Shared.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Acc.Services.Interfaces
+{
+	public interface IKtMastService
+	{
+		Task<List<KtMastDto>> GetAllKtMast();
+		Task<int> AddKtMast(KtMastDto ktMast);
+		Task<int> UpdateKtMast(KtMastDto ktMast);
+		Task<int> DeleteKtMast(string Kt);
+	}
+}

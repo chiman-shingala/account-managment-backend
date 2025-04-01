@@ -37,7 +37,7 @@ namespace Acc.Api.Controllers
 		[HttpDelete("delete-company")]
 		public async Task<IActionResult> DeleteCompany([FromQuery] string Comp_Code)
 		{
-			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _compMast.DeleteColour(Comp_Code), CommonConstants.SUCCESS));
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _compMast.DeleteCompany(Comp_Code), CommonConstants.SUCCESS));
 		}
 	}
 }

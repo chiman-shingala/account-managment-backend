@@ -29,7 +29,7 @@ namespace Acc.Data.Repositories
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_ShpMastSave", shpMast);
 		}
-		public async Task<int> DeletePurity(string S_Code)
+		public async Task<int> DeleteShape(string S_Code)
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_UtilShpMastShpDel", new { S_Code });
 		}
