@@ -87,6 +87,14 @@ builder.Services.AddScoped<ICompMastRepository, CompMastRepository>();
 builder.Services.AddScoped<ICompMastService, CompMastService>();
 builder.Services.AddScoped<IPktGroupRepository,PktGroupRepository>();
 builder.Services.AddScoped<IPktGroupService, PktGroupService>();
+builder.Services.AddScoped<IParMastRepository,ParMastRepository>();
+builder.Services.AddScoped<IParMastService, ParMastService>();
+builder.Services.AddScoped<IPCompMastRepository,PCompMastRepository>();
+builder.Services.AddScoped<IPCompMastService,PCompMastService>();
+builder.Services.AddScoped<ICertMastRepository,CertMastRepository>();
+builder.Services.AddScoped<ICertMastService,CertMastService>();
+builder.Services.AddScoped<IPersonMastRepository , PersonMastRepository>();
+builder.Services.AddScoped<IPersonMastService , PersonMastService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -96,7 +104,7 @@ app.UseSwagger(opt =>
 });
 app.MapScalarApiReference(opt =>
 {
-	opt.Title = "Scalar Example";
+	opt.Title = "Account Managment";
 	opt.Theme = ScalarTheme.BluePlanet;
 	opt.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.Http11);
 });

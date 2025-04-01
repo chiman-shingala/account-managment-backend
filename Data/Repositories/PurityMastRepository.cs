@@ -23,11 +23,11 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<int> AddPurity(QuaMastDto quaMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilQuaMastCreateQua", quaMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_QuaMastSave", quaMast);
 		}
 		public async Task<int> UpdatePurity(QuaMastDto quaMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilQuaMastUpdateQua", quaMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_QuaMastSave", quaMast);
 		}
 		public async Task<int> DeletePurity(short Q_Code)
 		{

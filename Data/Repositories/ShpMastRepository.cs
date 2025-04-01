@@ -23,11 +23,11 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<int> AddShape(ShpMastDto shpMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilShpMastCreateShp", shpMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_ShpMastSave", shpMast);
 		}
 		public async Task<int> UpdateShape(ShpMastDto shpMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilShpMastUpdateShp", shpMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_ShpMastSave", shpMast);
 		}
 		public async Task<int> DeletePurity(string S_Code)
 		{

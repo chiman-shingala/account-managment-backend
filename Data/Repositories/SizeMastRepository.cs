@@ -23,11 +23,11 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<int> AddSize(SizeMastDto sizeMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilSizeMastCreateSize", sizeMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_SizeMastSave", sizeMast);
 		}
 		public async Task<int> UpdateSize(SizeMastDto sizeMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilSizeMastUpdateSize", sizeMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_SizeMastSave", sizeMast);
 		}
 		public async Task<int> DeleteSize(short SZ_Code)
 		{
