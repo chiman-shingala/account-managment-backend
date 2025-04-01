@@ -23,11 +23,11 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<int> AddGroup(GrpMastDto grpMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilGrpMastCreateGrp", grpMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_GrpMastSave", grpMast);
 		}
 		public async Task<int> UpdateGroup(GrpMastDto grpMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilGrpMastUpdateGrp", grpMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_GrpMastSave", grpMast);
 		}
 		public async Task<int> DeleteGroup(string Gr_Code)
 		{

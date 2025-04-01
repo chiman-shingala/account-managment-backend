@@ -23,11 +23,11 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<int> AddCut(CutMastDto cutMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilCutMastCreateCol", cutMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_CutMastSave", cutMast);
 		}
 		public async Task<int> UpdateCut(CutMastDto cutMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilCutMastUpdateCut", cutMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_CutMastSave", cutMast);
 		}
 		public async Task<int> DeleteCut(short CT_Code)
 		{

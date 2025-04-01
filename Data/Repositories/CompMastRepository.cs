@@ -23,11 +23,11 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<int> AddCompany(CompMastDto compMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilCompMastCreateComp", compMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_CompMastSave", compMast);
 		}
 		public async Task<int> UpdateCompany(CompMastDto compMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilCompMastUpdateComp", compMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_CompMastSave", compMast);
 		}
 		public async Task<int> DeleteColour(string Comp_Code)
 		{

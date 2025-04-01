@@ -23,11 +23,11 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<int> AddPktGroup(PktGroupDto pktGroup)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilPktGroupMastCreatePktGroup", pktGroup);
+			return await _dRepository.ExecuteAsyncQuery("SP_PktGroupSave", pktGroup);
 		}
 		public async Task<int> UpdateGroup(PktGroupDto pktGroup)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilPktGroupMastUpdatePktGroup", pktGroup);
+			return await _dRepository.ExecuteAsyncQuery("SP_PktGroupSave", pktGroup);
 		}
 		public async Task<int> DeleteGroup(string PG_Code)
 		{

@@ -23,11 +23,11 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<int> AddColour(ColMastDto colMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilColMastCreateCol", colMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_ColMastSave", colMast);
 		}
 		public async Task<int> UpdateColour(ColMastDto colMast)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilColMastUpdateCol", colMast);
+			return await _dRepository.ExecuteAsyncQuery("SP_ColMastSave", colMast);
 		}
 		public async Task<int> DeleteColour(short C_Code)
 		{
