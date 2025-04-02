@@ -67,6 +67,8 @@ namespace Acc.Api.Extensions
 			services.AddScoped<ITaskMastService, TaskMastService>();
 			services.AddScoped<IRemaindMastRepository, RemaindMastRepository>();
 			services.AddScoped<IRemaindMastService, RemaindMastService>();
+			services.AddScoped<ILustMastRepository,LustMastRepository>();
+			services.AddScoped<ILustMastService, LustMastService>();
 			return services;
 		}
 	}

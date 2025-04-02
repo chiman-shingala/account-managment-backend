@@ -1,14 +1,8 @@
 ﻿using Acc.Data.Repository.Interface;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Dapper.SqlMapper;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Acc.Data.Repositories
 {
@@ -19,63 +13,63 @@ namespace Acc.Data.Repositories
 		{
 			conn = new SqlConnection("Data Source=DESKTOP-T5MN2V5;Initial Catalog=DRatna;User ID=sa;Password=sw;Integrated Security=True;TrustServerCertificate=true;");
 		}
-		public async Task<string> GetString(string storeProc, object param = null)
+		public async Task<string> GetString(string storeProc, object? param = null)
 		{
 			return await conn.QueryFirstAsync<string>(storeProc, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 		}
 
-		public async Task<string> GetStringByDynamicQuery(string query, object param = null)
+		public async Task<string> GetStringByDynamicQuery(string query, object? param = null)
 		{
 			return await conn.QueryFirstAsync<string>(query, param, commandType: CommandType.Text).ConfigureAwait(false);
 		}
 
-		public async Task<T> GetFirstOrDefault<T>(string storeProc, object param = null)
+		public async Task<T?> GetFirstOrDefault<T>(string storeProc, object? param = null)
 		{
 			var result = await conn.QueryAsync<T>(storeProc, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 			return result.FirstOrDefault();
 		}
 
 		//this method is used in emailSender....this is created by Divy 18/07/2023...
-		public async Task<T> QueryFirstOrDefaultAsync<T>(string storeProc)
+		public async Task<T?> QueryFirstOrDefaultAsync<T>(string storeProc)
 		{
 			var result = await conn.QueryFirstOrDefaultAsync<T>(storeProc, commandType: CommandType.StoredProcedure);
 			return result;
 		}
-		public async Task<T> GetFirstOrDefaultByDynamicQuery<T>(string query, object param = null)
+		public async Task<T?> GetFirstOrDefaultByDynamicQuery<T>(string query, object? param = null)
 		{
 			var result = await conn.QueryAsync<T>(query, param, commandType: CommandType.Text).ConfigureAwait(false);
 			return result.FirstOrDefault();
 		}
 
-		public async Task<List<T>> GetAll<T>(string storeProc, object param = null)
+		public async Task<List<T>> GetAll<T>(string storeProc, object? param = null)
 		{
 			var result = await conn.QueryAsync<T>(storeProc, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 			return result.ToList();
 		}
 
-		public async Task<GridReader> QueryMultiple(string storeProc, object param = null)
+		public async Task<GridReader> QueryMultiple(string storeProc, object? param = null)
 		{
 			return await conn.QueryMultipleAsync(storeProc, param: param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 		}
 
-		public async Task<(List<T> Result, IDictionary<string, object> Output)> GetAllDictionary<T>(string storeProc, object param = null, IDictionary<string, object> output = null)
-		{
-			var parameters = new DynamicParameters(param);
-			foreach (var item in output ?? new Dictionary<string, object>())
-				parameters.Add(item.Key, dbType: (DbType)item.Value, direction: ParameterDirection.Output);
-			var result = await conn.QueryAsync<T>(storeProc, parameters, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
-			foreach (var key in new List<string>((output ?? new Dictionary<string, object>()).Keys))
-				output[key] = parameters.Get<object>(key);
-			return (result.ToList(), output);
-		}
+		//public async Task<(List<T> Result, IDictionary<string, object> Output)> GetAllDictionary<T>(string storeProc, object param = null, IDictionary<string, object> output = null)
+		//{
+		//	var parameters = new DynamicParameters(param);
+		//	foreach (var item in output ?? new Dictionary<string, object>())
+		//		parameters.Add(item.Key, dbType: (DbType)item.Value, direction: ParameterDirection.Output);
+		//	var result = await conn.QueryAsync<T>(storeProc, parameters, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
+		//	foreach (var key in new List<string>((output ?? new Dictionary<string, object>()).Keys))
+		//		output[key] = parameters.Get<object>(key);
+		//	return (result.ToList(), output);
+		//}
 
-		public async Task<List<T>> GetAllByDynamicQuery<T>(string query, object param = null)
+		public async Task<List<T>> GetAllByDynamicQuery<T>(string query, object? param = null)
 		{
 			var result = await conn.QueryAsync<T>(query, param, commandType: CommandType.Text).ConfigureAwait(false);
 			return result.ToList();
 		}
 
-		public async Task<int> ExecuteAsyncQuery(string storeProc, object param = null)
+		public async Task<int> ExecuteAsyncQuery(string storeProc, object? param = null)
 		{
 			return await conn.ExecuteAsync(storeProc, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 		}
@@ -88,21 +82,21 @@ namespace Acc.Data.Repositories
 
 			return outputValue;
 		}
-		public async Task<int> ExecuteAsyncDynamicQuery(string query, object param = null)
+		public async Task<int> ExecuteAsyncDynamicQuery(string query, object? param = null)
 		{
 			return await conn.ExecuteAsync(query, param, commandType: CommandType.Text).ConfigureAwait(false);
 		}
-		public async Task<object> GetScalar(string storeProc, object param = null)
+		public async Task<object?> GetScalar(string storeProc, object? param = null)
 		{
 			return await conn.ExecuteScalarAsync<object>(storeProc, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 		}
-		public async Task<T> ExecuteScalarAsync<T>(string storeProc)
+		public async Task<T?> ExecuteScalarAsync<T>(string storeProc)
 		{
 			var result = await conn.ExecuteScalarAsync<T>(storeProc, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 			return result;
 		}
 
-		public async Task<T> ExecuteAsyncQueryWithJson<T>(string storeProc, string param)
+		public async Task<T?> ExecuteAsyncQueryWithJson<T>(string storeProc, string param)
 		{
 			var parameters = new DynamicParameters();
 			parameters.Add("@jsonData", param, DbType.String, ParameterDirection.Input);
@@ -110,7 +104,7 @@ namespace Acc.Data.Repositories
 			var result = await conn.QuerySingleOrDefaultAsync<T>(storeProc, parameters, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 			return result;
 		}
-		public async Task<T> QuerySingleOrDefaultAsync<T>(string storedProcedure, object param = null)
+		public async Task<T?> QuerySingleOrDefaultAsync<T>(string storedProcedure, object? param = null)
 		{
 			return await conn.QuerySingleOrDefaultAsync<T>(storedProcedure, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 		}
