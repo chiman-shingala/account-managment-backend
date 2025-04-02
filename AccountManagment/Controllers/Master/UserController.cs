@@ -10,7 +10,7 @@ using Services.Services;
 using System.ComponentModel.Design;
 using System.Net;
 
-namespace AccountManagment.Controllers
+namespace Acc.Api.Controllers.Master
 {
 	[Authorize]
 	[Route("api/[controller]")]
