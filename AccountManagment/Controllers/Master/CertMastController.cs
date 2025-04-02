@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Acc.Api.Controllers
+namespace Acc.Api.Controllers.Master
 {
 	[Authorize]
 	[Route("api/[controller]")]
