@@ -1,5 +1,6 @@
-﻿using Acc.Data.Interfaces;
+﻿using Acc.Data.Interfaces.IRapaport;
 using Acc.Data.Repository.Interface;
+using Acc.Shared.Dtos;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acc.Data.Repositories
+namespace Acc.Data.Repositories.Rapaport
 {
 	public class RapaportRepository : IRapaportRepository
 	{
@@ -95,6 +96,18 @@ namespace Acc.Data.Repositories
 				return Convert.ToDouble(result[columnName]);
 			}
 			return 0;
+		}
+		public async Task<List<RapaportDto>> GetAllRapaport(int SZ_Code ,string S_Code)
+		{
+			return await _dRepository.GetAll<RapaportDto>("SP_RapaportFill",new {SZ_Code,S_Code});
+		}
+		public async Task<int> AddRapaport(InsertRapaportDto rapaportDto)
+		{
+			return await _dRepository.ExecuteAsyncQuery("SP_RapaportSave", rapaportDto);
+		}
+		public async Task<int> UpdateRapaport(InsertRapaportDto rapaportDto)
+		{
+			return await _dRepository.ExecuteAsyncQuery("SP_RapaportSave", rapaportDto);
 		}
 	}
 }
