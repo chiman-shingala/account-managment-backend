@@ -1,13 +1,9 @@
 ﻿using Acc.Services.Common;
 using Acc.Services.Dtos;
 using Acc.Shared.Dtos;
-using Data.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
-using Services.Services;
-using System.ComponentModel.Design;
 using System.Net;
 
 namespace Acc.Api.Controllers.Master

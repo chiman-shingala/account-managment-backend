@@ -1,4 +1,5 @@
 ﻿using Acc.Data.Interfaces;
+using Acc.Data.Interfaces.IMaster;
 using Acc.Data.Interfaces.IRapaport;
 using Acc.Services.Interfaces;
 using Acc.Shared.Dtos;
