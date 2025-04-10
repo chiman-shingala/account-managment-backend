@@ -1,10 +1,9 @@
-﻿using Acc.Services.Common;
+﻿using Acc.Data.Interfaces.IMaster;
+using Acc.Services.Common;
 using Acc.Services.Dtos;
 using Acc.Shared.Dtos;
 using Azure.Core;
-using Data.Interfaces;
 using Data.Models;
-using Data.Repositories;
 using Services.Interfaces;
 using System.Threading.Tasks;
 

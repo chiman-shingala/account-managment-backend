@@ -1,6 +1,8 @@
 ﻿using Acc.Data.Interfaces;
+using Acc.Data.Interfaces.IMaster;
 using Acc.Data.Interfaces.IRapaport;
 using Acc.Data.Repositories;
+using Acc.Data.Repositories.Master;
 using Acc.Data.Repositories.Rapaport;
 using Acc.Data.Repository.Interface;
 using Acc.Services.Interfaces;
@@ -8,8 +10,6 @@ using Acc.Services.Interfaces.Rapaport;
 using Acc.Services.Services;
 using Acc.Services.Services.Rapaport;
 using Acc.Shared.Common;
-using Data.Interfaces;
-using Data.Repositories;
 using Services.Interfaces;
 using Services.Services;
 
