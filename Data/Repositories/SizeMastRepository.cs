@@ -1,5 +1,6 @@
 ﻿using Acc.Data.Interfaces;
 using Acc.Data.Repository.Interface;
+using Acc.Shared.Common;
 using Acc.Shared.Dtos;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace Acc.Data.Repositories
 	public class SizeMastRepository : ISizeMastRepository
 	{
 		private readonly IDRepository _dRepository;
+		private readonly CommonMethods _commonMethods;
 
-		public SizeMastRepository(IDRepository dRepository)
+		public SizeMastRepository(IDRepository dRepository,CommonMethods commonMethods)
 		{
 			_dRepository = dRepository;
+			_commonMethods = commonMethods;
 		}
 		public async Task<List<SizeMastDto>> GetAllSize()
 		{
@@ -33,5 +36,9 @@ namespace Acc.Data.Repositories
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_UtilSizeMastSizeDel", new { SZ_Code });
 		}
+		public async Task<int> GetSizeCode(double pdblCarat)
+		{
+			return await _commonMethods.SearchText<int>("SizeMast", "F_Size <= " + pdblCarat.ToString() + " And T_Size >= " + pdblCarat.ToString(), "SZ_Code", 1);
+		}		
 	}
 }
