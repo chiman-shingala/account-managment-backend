@@ -6,12 +6,13 @@ using Acc.Data.Repositories.Master;
 using Acc.Data.Repositories.Rapaport;
 using Acc.Data.Repository.Interface;
 using Acc.Services.Interfaces;
+using Acc.Services.Interfaces.Master;
 using Acc.Services.Interfaces.Rapaport;
 using Acc.Services.Services;
+using Acc.Services.Services.Master;
 using Acc.Services.Services.Rapaport;
 using Acc.Shared.Common;
 using Services.Interfaces;
-using Services.Services;
 
 namespace Acc.Api.Extensions
 {

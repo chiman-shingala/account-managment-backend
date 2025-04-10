@@ -1,5 +1,5 @@
 ﻿using Acc.Services.Common;
-using Acc.Services.Interfaces;
+using Acc.Services.Interfaces.Master;
 using Acc.Shared.Dtos;
 using Data.Models;
 using Microsoft.AspNetCore.Authorization;
