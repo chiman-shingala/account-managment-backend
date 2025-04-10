@@ -13,5 +13,6 @@ namespace Acc.Data.Interfaces
 		Task<int> AddLustMast(LustMastDto lustMast);
 		Task<int> UpdateLustMast(LustMastDto lustMast);
 		Task<int> DeleteLustMast(short LU_Code);
+		Task<string?> GetLustPer(int pintLUCode);
 	}
 }

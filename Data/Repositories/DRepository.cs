@@ -30,9 +30,9 @@ namespace Acc.Data.Repositories
 		}
 
 		//this method is used in emailSender....this is created by Divy 18/07/2023...
-		public async Task<T?> QueryFirstOrDefaultAsync<T>(string storeProc)
+		public async Task<T?> QueryFirstOrDefaultAsync<T>(string storeProc,object? param = null)
 		{
-			var result = await conn.QueryFirstOrDefaultAsync<T>(storeProc, commandType: CommandType.StoredProcedure);
+			var result = await conn.QueryFirstOrDefaultAsync<T>(storeProc, param,commandType: CommandType.StoredProcedure);
 			return result;
 		}
 		public async Task<T?> GetFirstOrDefaultByDynamicQuery<T>(string query, object? param = null)

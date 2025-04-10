@@ -1,19 +1,12 @@
 using Acc.Api.Extensions;
-using Acc.Data.Interfaces;
-using Acc.Data.Repositories;
-using Acc.Data.Repository.Interface;
-using Acc.Services.Interfaces;
-using Acc.Services.Services;
-using Data.Interfaces;
 using Data.Models;
-using Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
-using Services.Interfaces;
-using Services.Services;
+using System.Data;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -61,6 +54,9 @@ builder.Services.AddSwaggerGen(opt =>
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DratnaContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("AccountSystem")));
+
+builder.Services.AddScoped<IDbConnection>(sp =>
+	new SqlConnection(builder.Configuration.GetConnectionString("AccountSystem")));
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.RegisterApplicationServices();

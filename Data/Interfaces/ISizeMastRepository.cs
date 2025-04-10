@@ -13,5 +13,6 @@ namespace Acc.Data.Interfaces
 		Task<int> AddSize(SizeMastDto sizeMast);
 		Task<int> UpdateSize(SizeMastDto sizeMast);
 		Task<int> DeleteSize(short SZ_Code);
+		Task<int> GetSizeCode(double pdblCarat);
 	}
 }

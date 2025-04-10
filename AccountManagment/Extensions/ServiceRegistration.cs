@@ -3,6 +3,7 @@ using Acc.Data.Repositories;
 using Acc.Data.Repository.Interface;
 using Acc.Services.Interfaces;
 using Acc.Services.Services;
+using Acc.Shared.Common;
 using Data.Interfaces;
 using Data.Repositories;
 using Services.Interfaces;
@@ -69,6 +70,25 @@ namespace Acc.Api.Extensions
 			services.AddScoped<IRemaindMastService, RemaindMastService>();
 			services.AddScoped<ILustMastRepository,LustMastRepository>();
 			services.AddScoped<ILustMastService, LustMastService>();
+			services.AddScoped<IPacketEntService, PacketEntService>();
+			services.AddScoped<IRapaportRepository, RapaportRepository>();
+			services.AddScoped<IBrnMastRepository, BrnMastRepository>();
+			services.AddScoped<ICulMastRepository, CulMastRepository>();
+			services.AddScoped<IEFacMastRepository, EFacMastRepository>();
+			services.AddScoped<IHAMastRepository, HAMastRepository>();
+			services.AddScoped<IRSIncMastRepository, RSIncMastRepository>();
+			services.AddScoped<ILustMastRepository, LustMastRepository>();
+			services.AddScoped<ISBIncMastRepository, SBIncMastRepository>();
+			services.AddScoped<ISIncMastRepository, SIncMastRepository>();
+			services.AddScoped<ISOIncMastRepository, SOIncMastRepository>();
+			services.AddScoped<ITBIncMastRepository, TBIncMastRepository>();
+			services.AddScoped<ITIncMastRepository, TIncMastRepository>();
+			services.AddScoped<ITOIncMastRepository, TOIncMastRepository>();
+			services.AddScoped<ITBIncMastRepository, TBIncMastRepository>();
+			services.AddScoped<ITIncMastRepository, TIncMastRepository>();
+			services.AddScoped<ITOIncMastRepository, TOIncMastRepository>();
+
+			services.AddScoped<CommonMethods>();
 			return services;
 		}
 	}

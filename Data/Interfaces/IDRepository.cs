@@ -10,7 +10,7 @@ namespace Acc.Data.Repository.Interface
 		Task<string> GetString(string storeProc, object? param = null);
 		Task<string> GetStringByDynamicQuery(string query, object? param = null);
 		Task<T?> GetFirstOrDefault<T>(string storeProc, object? param = null);
-		Task<T?> QueryFirstOrDefaultAsync<T>(string storeProc);
+		Task<T?> QueryFirstOrDefaultAsync<T>(string storeProc, object? param = null);
 		Task<T?> GetFirstOrDefaultByDynamicQuery<T>(string query, object? param = null);
         Task<List<T>> GetAll<T>(string storeProc, object? param = null);
         Task<GridReader> QueryMultiple(string storeProc, object? param = null);
