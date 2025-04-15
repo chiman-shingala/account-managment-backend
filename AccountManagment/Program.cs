@@ -24,6 +24,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
 	};
 });
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAll", policy =>
+	{
+		policy.AllowAnyOrigin()
+			  .AllowAnyMethod()
+			  .AllowAnyHeader();
+	});
+});
+
 builder.Services.AddSwaggerGen(opt =>
 {
 	opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -61,7 +71,7 @@ builder.Services.AddScoped<IDbConnection>(sp =>
 builder.Services.AddOpenApi();
 builder.Services.RegisterApplicationServices();
 var app = builder.Build();
-
+app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.
 app.UseSwagger(opt =>
 {
