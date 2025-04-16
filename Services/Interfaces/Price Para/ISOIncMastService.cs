@@ -5,14 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acc.Data.Interfaces
+namespace Acc.Services.Interfaces.Price_Para
 {
-	public interface ISOIncMastRepository
+	public interface ISOIncMastService
 	{
-		Task<string?> GetSOIncPer(int pintSOIncCode);
 		Task<List<SoincMastDto>> GetAllSOIncMast();
 		Task<int> AddSOIncMast(SoincMastDto soincMast);
 		Task<int> UpdateSOIncMast(SoincMastDto soincMast);
-		Task<int> DeleteSOIncMast(short SOInCode);
+		Task<int> DeleteSOIncMast(short SOIN_Code);
 	}
 }

@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acc.Data.Interfaces
+namespace Acc.Services.Interfaces.Price_Para
 {
-	public interface IRSIncMastRepository
+	public interface IRSIncMastService
 	{
-		Task<string?> GetRSIncPer(int pintRSIncCode);
 		Task<List<RsincMastDto>> GetAllRSIncMast();
 		Task<int> AddRSIncMast(RsincMastDto rsincMast);
 		Task<int> UpdateRSIncMast(RsincMastDto rsincMast);
