@@ -5,14 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acc.Data.Interfaces
+namespace Acc.Services.Interfaces.Price_Para
 {
-	public interface ISIncMastRepository
+	public interface ISIncMastService
 	{
-		Task<string?> GetSIncPer(int pintSIncCode);
 		Task<List<SIncMastDto>> GetAllSIncMast();
-		Task<int> AddSIncMast(SIncMastDto sIncMast);
-		Task<int> UpdateSIncMast(SIncMastDto sIncMast);
+		Task<int> AddSIncMast(SIncMastDto sbincMast);
+		Task<int> UpdateSIncMast(SIncMastDto sbincMast);
 		Task<int> DeleteSIncMast(short SIN_Code);
 	}
 }

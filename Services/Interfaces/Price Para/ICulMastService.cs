@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acc.Data.Interfaces.IMaster
+namespace Acc.Services.Interfaces.Price_Para
 {
-	public interface ICulMastRepository
+	public interface ICulMastService
 	{
-		Task<string?> GetCulPer(int pintCUCode);
 		Task<List<CulMastDto>> GetAllCulMast();
 		Task<int> AddCulMast(CulMastDto culMast);
 		Task<int> UpdateCulMast(CulMastDto culMast);
