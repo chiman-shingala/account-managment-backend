@@ -11,7 +11,7 @@ namespace Acc.Data.Repositories
 		private readonly IDbConnection conn;
 		public DRepository()
 		{
-			conn = new SqlConnection("Data Source=DESKTOP-T5MN2V5;Initial Catalog=DRatna;User ID=sa;Password=sw;Integrated Security=True;TrustServerCertificate=true;");
+			conn = new SqlConnection("Data Source=DESKTOP-T5MN2V5;Initial Catalog=DRatna;User ID=sa;Password=sw;Integrated Security=false;TrustServerCertificate=true;");
 		}
 		public async Task<string> GetString(string storeProc, object? param = null)
 		{

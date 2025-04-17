@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acc.Data.Interfaces.IUtility
+namespace Acc.Services.Interfaces.Utility
 {
-	public interface IPerMastRepository
+	public interface IPerMastService
 	{
 		Task<List<PerMastDto>> GetAllPerMast(string User_Name);
 		Task<List<PerMastDto>> GetUserWiseMenu(string User_Name);

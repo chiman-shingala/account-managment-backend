@@ -27,8 +27,4 @@
     <ProjectReference Include="..\Services\Acc.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Utility\" />
-  </ItemGroup>
-
 </Project>

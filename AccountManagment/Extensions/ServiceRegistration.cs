@@ -1,18 +1,22 @@
 ﻿using Acc.Data.Interfaces;
 using Acc.Data.Interfaces.IMaster;
 using Acc.Data.Interfaces.IRapaport;
+using Acc.Data.Interfaces.IUtility;
 using Acc.Data.Repositories;
 using Acc.Data.Repositories.Master;
 using Acc.Data.Repositories.Rapaport;
+using Acc.Data.Repositories.Utility;
 using Acc.Data.Repository.Interface;
 using Acc.Services.Interfaces;
 using Acc.Services.Interfaces.Master;
 using Acc.Services.Interfaces.Price_Para;
 using Acc.Services.Interfaces.Rapaport;
+using Acc.Services.Interfaces.Utility;
 using Acc.Services.Services;
 using Acc.Services.Services.Master;
 using Acc.Services.Services.Price_Para;
 using Acc.Services.Services.Rapaport;
+using Acc.Services.Services.Utility;
 using Acc.Shared.Common;
 using Services.Interfaces;
 
@@ -110,6 +114,10 @@ namespace Acc.Api.Extensions
 			services.AddScoped<ICutDiscService, CutDiscService>();
 			services.AddScoped<IFluoDiscRepository, FluoDiscRepository>();
 			services.AddScoped<IFluoDiscService, FluoDiscService>();
+			services.AddScoped<IPerMastRepository, PerMastRepository>();
+			services.AddScoped<IPerMastService, PerMastService>();
+			services.AddScoped<IFormWisePerRepository, FormWisePerRepository>();
+			services.AddScoped<IFormWisePerService, FormWisePerService>();
 			return services;
 		}
 	}
