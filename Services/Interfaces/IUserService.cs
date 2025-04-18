@@ -13,7 +13,7 @@ namespace Services.Interfaces
     {
 		Task<int> AuthenticateUser(LoginRequestDto requestDto);
 		Task<int> AddUser(PassMastDto userDto);
-		Task<int> ChangePassword(ChangePasswordDto changePasswordDto);
+		Task<string> ChangePassword(ChangePasswordDto changePasswordDto);
 		Task<int> DeleteUser(string userId);
 	}
 

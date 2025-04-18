@@ -26,11 +26,24 @@ namespace Acc.Services.Services.Master
 		{
 			return await _userRepository.AuthenticateUser(requestDto);
 		}
-		public async Task<int> ChangePassword(ChangePasswordDto changePasswordDto)
+		public async Task<string> ChangePassword(ChangePasswordDto changePasswordDto)
 		{
-			string password = EncryptionDescryption.Encode_Decode(changePasswordDto.Password, "E");
-			changePasswordDto.Password = password;
-			return await _userRepository.ChangePassword(changePasswordDto);
+			var user = await _userRepository.IsUserExist(changePasswordDto.UserId);
+			if(user == null)
+			{
+				return "Invalid User";
+			}
+			string decodedOldPass = EncryptionDescryption.Encode_Decode(changePasswordDto.OldPassword, "E");
+			if (!user.Password.Equals(decodedOldPass, StringComparison.OrdinalIgnoreCase))
+			{
+				return "Invalid Old Password. Please Enter Correct Password.";
+			}
+			
+			changePasswordDto.NewPassword = EncryptionDescryption.Encode_Decode(changePasswordDto.NewPassword, "E");
+
+			await _userRepository.ChangePassword(changePasswordDto);
+		
+			return "Password Changed Successfully"; 
 		}
 		public async Task<int> DeleteUser(string userId)
 		{

@@ -15,5 +15,6 @@ namespace Acc.Data.Interfaces.IMaster
 		Task<int> AddUser(PassMastDto addUser);
 		Task<int> ChangePassword(ChangePasswordDto changePasswordDto);
 		Task<int> DeleteUser(string userId);
+		Task<PassMastDto> IsUserExist(string userId);
 	}
 }
