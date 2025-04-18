@@ -57,7 +57,7 @@ namespace Acc.Data.Repositories.Master
 				return 2;
 			}
 		}			
-		public async Task<object> IsUserExist(string userId)
+		public async Task<PassMastDto> IsUserExist(string userId)
 		{
 			var parameters = new { UserId = userId };
 			var result = await _dRepository.QuerySingleOrDefaultAsync<PassMastDto>("SP_UtilCheckUserLogin", parameters);
@@ -66,12 +66,12 @@ namespace Acc.Data.Repositories.Master
 		}
 		public async Task<int> ChangePassword(ChangePasswordDto changePasswordDto)
 		{
-			var checkUser = IsUserExist(changePasswordDto.UserId);
-			if (checkUser == null)
+			var parameter = new
 			{
-				return 0; //invalid user
-			}
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilUserMastChangePass",changePasswordDto);
+				UserId = changePasswordDto.UserId,
+				Password = changePasswordDto.NewPassword
+			};
+			return await _dRepository.ExecuteAsyncQuery("SP_UtilUserMastChangePass", parameter);
 		}
 		public async Task<int> DeleteUser(string userId)
 		{

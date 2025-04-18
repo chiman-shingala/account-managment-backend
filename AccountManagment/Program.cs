@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
+using Serilog;
 using System.Data;
 using System.Text;
 
@@ -70,6 +71,12 @@ builder.Services.AddScoped<IDbConnection>(sp =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.RegisterApplicationServices();
+Log.Logger = new LoggerConfiguration()
+	.MinimumLevel.Information()
+	.WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+	.CreateLogger();
+
+builder.Host.UseSerilog();
 var app = builder.Build();
 app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.
@@ -83,7 +90,7 @@ app.MapScalarApiReference(opt =>
 	opt.Theme = ScalarTheme.BluePlanet;
 	opt.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.Http11);
 });
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

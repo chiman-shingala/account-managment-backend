@@ -1,11 +1,13 @@
 ﻿using Acc.Services.Common;
 using Acc.Services.Interfaces;
 using Acc.Shared.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace Acc.Api.Controllers.Price_Para
 {
+	[Authorize]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class LustMastController : ControllerBase

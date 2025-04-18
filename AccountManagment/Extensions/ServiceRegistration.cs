@@ -118,6 +118,12 @@ namespace Acc.Api.Extensions
 			services.AddScoped<IPerMastService, PerMastService>();
 			services.AddScoped<IFormWisePerRepository, FormWisePerRepository>();
 			services.AddScoped<IFormWisePerService, FormWisePerService>();
+			services.AddScoped<IUserCompRepository, UserCompRepository>();
+			services.AddScoped<IUserCompService, UserCompService>();
+			services.AddScoped<ISalEncRateRepository, SalEncRateRepository>();
+			services.AddScoped<ISalEncRateService, SalEncRateService>();
+			services.AddScoped<IBalTranRepository, BalTranRepository>();
+			services.AddScoped<IBalTranService, BalTranService>();
 			return services;
 		}
 	}
