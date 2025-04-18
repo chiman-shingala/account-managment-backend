@@ -1,6 +1,7 @@
 ﻿using Acc.Data.Repository.Interface;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System.Data;
 using static Dapper.SqlMapper;
 
@@ -9,9 +10,10 @@ namespace Acc.Data.Repositories
 	public class DRepository : IDRepository, IDisposable
 	{
 		private readonly IDbConnection conn;
-		public DRepository()
+		public DRepository(IConfiguration configuration)
 		{
-			conn = new SqlConnection("Data Source=DESKTOP-T5MN2V5;Initial Catalog=DRatna;User ID=sa;Password=sw;Integrated Security=false;TrustServerCertificate=true;");
+			var connectionString = configuration.GetConnectionString("AccountSystem");
+			conn = new SqlConnection(connectionString);
 		}
 		public async Task<string> GetString(string storeProc, object? param = null)
 		{
