@@ -1,11 +1,12 @@
 ﻿using Acc.Data.Interfaces;
 using Acc.Data.Interfaces.IMaster;
 using Acc.Data.Interfaces.IRapaport;
-using Acc.Services.Interfaces;
+using Acc.Data.Interfaces.ITransaction;
+using Acc.Services.Interfaces.Transaction;
 using Acc.Shared.Dtos;
 using Val = Acc.Shared.Common.CommonMethods;
 
-namespace Acc.Services.Services
+namespace Acc.Services.Services.Transaction
 {
 	public class PacketEntService : IPacketEntService
 	{
@@ -23,6 +24,7 @@ namespace Acc.Services.Services
 		private readonly ITIncMastRepository _tIncMastRepository;
 		private readonly ITOIncMastRepository _tOIncMastRepository;
 		private readonly IHAMastRepository _hAMastRepository;
+		private readonly IPacketEntRepository _packetEntRepository;
 
 		public PacketEntService(IRapaportRepository rapaportRepo, ISizeMastRepository sizeMastRepository,
 			IBrnMastRepository brnMastRepository, ICulMastRepository culMastRepository,
@@ -30,7 +32,8 @@ namespace Acc.Services.Services
 			IRSIncMastRepository rSIncMastRepository, ISBIncMastRepository sBIncMastRepository,
 			ISIncMastRepository sIncMastRepository, ISOIncMastRepository sOIncMastRepository,
 			ITBIncMastRepository tBIncMastRepository, ITIncMastRepository tIncMastRepository,
-			ITOIncMastRepository tOIncMastRepository, IHAMastRepository hAMastRepository)
+			ITOIncMastRepository tOIncMastRepository, IHAMastRepository hAMastRepository,
+			IPacketEntRepository packetEntRepository)
 		{
 			_rapaportRepo = rapaportRepo;
 			_sizeMastRepository = sizeMastRepository;
@@ -46,6 +49,7 @@ namespace Acc.Services.Services
 			_tIncMastRepository = tIncMastRepository;
 			_tOIncMastRepository = tOIncMastRepository;
 			_hAMastRepository = hAMastRepository;
+			_packetEntRepository = packetEntRepository;
 		}
 		public async Task<double> FindRapAsync(PacketEntDto pc1)
 		{
@@ -199,5 +203,17 @@ namespace Acc.Services.Services
 			}
 			return null;
 		}		
+		public async Task<int> AddPacketEnt(PktMastDto packetEnt)
+		{
+			return await _packetEntRepository.AddPacketEnt(packetEnt);
+		}
+		public async Task<int> UpdatePacketEnt(PktMastDto packetEnt)
+		{
+			return await _packetEntRepository.UpdatePacketEnt(packetEnt);
+		}
+		public async Task<int> DeletePacketEnt(string PId,string Comp_Code)
+		{
+			return await _packetEntRepository.DeletePacketEnt(PId, Comp_Code);
+		}
 	}
 }
