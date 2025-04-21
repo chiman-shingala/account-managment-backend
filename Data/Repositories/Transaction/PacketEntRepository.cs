@@ -1,0 +1,42 @@
+﻿using Acc.Data.Interfaces.ITransaction;
+using Acc.Data.Repository.Interface;
+using Acc.Shared.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Acc.Data.Repositories.Transaction
+{
+	public class PacketEntRepository : IPacketEntRepository 
+	{
+		private readonly IDRepository _dRepository;
+
+		public PacketEntRepository(IDRepository dRepository)
+		{
+			_dRepository = dRepository;
+		}
+		public async Task<int> AddPacketEnt(PktMastDto packetEnt)
+		{
+			var result = await _dRepository.ExecuteAsyncQuery("SP_TrnPacketEntSave", packetEnt);
+			return result;
+		}
+		public async Task<int> UpdatePacketEnt(PktMastDto packetEnt)
+		{
+			var result = await _dRepository.ExecuteAsyncQuery("SP_TrnPacketEntSave", packetEnt);
+			return result;
+		}
+		public async Task<int> DeletePacketEnt(string PId, string Comp_Code)
+		{			
+			return await _dRepository.ExecuteAsyncQueryWithOutputParameter<int>("SP_TrnPacketEntDelete", parameters =>
+			{
+				parameters.Add("@PId", PId, DbType.String);
+				parameters.Add("@Comp_Code", Comp_Code, DbType.String);
+				parameters.Add("@Out", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				return parameters;
+			}, "Out");
+		}
+	}
+}
