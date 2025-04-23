@@ -60,6 +60,11 @@ builder.Services.AddSwaggerGen(opt =>
 					Array.Empty<string>()
 				}
 			});
+	opt.SwaggerDoc("v1", new OpenApiInfo
+	{
+		Title = "Account Management API",
+		Version = "v1"
+	});
 });
 
 builder.Services.AddControllers();
@@ -80,15 +85,11 @@ builder.Host.UseSerilog();
 var app = builder.Build();
 app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.
-app.UseSwagger(opt =>
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-	opt.RouteTemplate = "openapi/{documentName}.json";
-});
-app.MapScalarApiReference(opt =>
-{
-	opt.Title = "Account Managment";
-	opt.Theme = ScalarTheme.BluePlanet;
-	opt.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.Http11);
+	c.SwaggerEndpoint("/swagger/v1/swagger.json", "Account Management API V1");
+	c.RoutePrefix = "swagger";
 });
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
