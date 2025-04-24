@@ -10,5 +10,6 @@ namespace Acc.Services.Interfaces.Utility
 	public interface IFormWisePerService
 	{
 		Task<List<PerMastDto>> GetAllFormWisePer(string Form_Name);
+		Task<List<PerMastDto>> GetAllFormPer(string User_Name);
 	}
 }

@@ -2,7 +2,6 @@
 using Acc.Data.Repositories;
 using Acc.Services.Interfaces.Master;
 using Acc.Shared.Dtos;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
