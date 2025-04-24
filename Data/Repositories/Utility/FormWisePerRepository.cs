@@ -21,5 +21,9 @@ namespace Acc.Data.Repositories.Utility
 		{
 			return await _dRepository.GetAll<PerMastDto>("usp_FormWisePerDisp", new { Form_Name });
 		}
+		public async Task<List<PerMastDto>> GetAllFormPer(string User_Name)
+		{
+			return await _dRepository.GetAll<PerMastDto>("SP_GetAllFrmPer", new { User_Name });
+		}
 	}
 }

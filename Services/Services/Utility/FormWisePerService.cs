@@ -21,5 +21,9 @@ namespace Acc.Services.Services.Utility
 		{
 			return await _formWisePer.GetAllFormWisePer(Form_Name);
 		}
+		public async Task<List<PerMastDto>> GetAllFormPer(string User_Name)
+		{
+			return await _formWisePer.GetAllFormPer(User_Name);
+		}
 	}
 }

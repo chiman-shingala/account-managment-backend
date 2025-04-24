@@ -34,8 +34,9 @@ namespace Acc.Api.Controllers.Master
 
 			if (result == 1)
 			{
-				var token = JwtTokenHelper.GenerateToken(request.UserId,_configuration);
-				return Ok(new ApiResponse(true, HttpStatusCode.OK, token, "Login successful"));
+				var token = JwtTokenHelper.GenerateToken(request.UserId, _configuration);
+				var response = new { Token = token, UserId = request.UserId };
+				return Ok(new ApiResponse(true, HttpStatusCode.OK, response, "Login successful"));
 			}
 			else if (result == 2)
 			{
