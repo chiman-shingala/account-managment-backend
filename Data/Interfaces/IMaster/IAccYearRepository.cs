@@ -1,4 +1,5 @@
 ﻿using Acc.Shared.Dtos;
+using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,6 @@ namespace Acc.Data.Interfaces.IMaster
 		Task<List<AccYearDto>> GetAllAccYear(string Comp_Code);
 		Task<int> AddAccYear(AccYearDto accYearDto);
 		Task<int> UpdateAccYear(AccYearDto accYearDto);
-		Task<int> DeleteAccYear(string Comp_Code);
+		Task<int> DeleteAccYear(string Comp_Code, int AcYear);
 	}
 }

@@ -12,6 +12,6 @@ namespace Acc.Services.Interfaces.Master
 		Task<List<AccYearDto>> GetAllAccYear(string Comp_Code);
 		Task<int> AddAccYear(AccYearDto accYear);
 		Task<int> UpdateAccYear(AccYearDto accYear);
-		Task<int> DeleteAccYear(string Comp_Code);
+		Task<int> DeleteAccYear(string Comp_Code, int AcYear);
 	}
 }

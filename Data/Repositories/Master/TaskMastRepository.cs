@@ -34,7 +34,7 @@ namespace Acc.Data.Repositories.Master
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_TaskMastSave", taskMast);
 		}
-		public async Task<int> DeleteTaskMast(int TaskId,int UserId)
+		public async Task<int> DeleteTaskMast(int TaskId,string UserId)
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_UtilTaskMastDel", new { TaskId,UserId });
 		}

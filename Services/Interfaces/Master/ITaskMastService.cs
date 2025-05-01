@@ -13,6 +13,6 @@ namespace Acc.Services.Interfaces.Master
 		Task<int> GetNewTaskID(string UserId);
 		Task<int> AddTaskMast(TaskMastDto taskMast);
 		Task<int> UpdateTaskMast(TaskMastDto taskMast);
-		Task<int> DeleteTaskMast(int TaskId, int UserId);
+		Task<int> DeleteTaskMast(int TaskId, string UserId);
 	}
 }

@@ -34,7 +34,7 @@ namespace Acc.Services.Services.Master
 		{
 			return await _taskMast.UpdateTaskMast(taskMast);
 		}
-		public async Task<int> DeleteTaskMast(int TaskId, int UserId)
+		public async Task<int> DeleteTaskMast(int TaskId, string UserId)
 		{
 			return await _taskMast.DeleteTaskMast(TaskId, UserId);
 		}
