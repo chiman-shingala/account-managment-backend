@@ -30,9 +30,9 @@ namespace Acc.Services.Services.Price_Para
 		{
 			return await _tIncMast.UpdateTIncMast(incMast);
 		}
-		public async Task<int> DeleteTIncMast(short TinCode)
+		public async Task<int> DeleteTIncMast(short TIN_Code)
 		{
-			return await _tIncMast.DeleteTIncMast(TinCode);
+			return await _tIncMast.DeleteTIncMast(TIN_Code);
 		}
 	}
 }

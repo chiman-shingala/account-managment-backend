@@ -12,6 +12,6 @@ namespace Acc.Services.Interfaces.Price_Para
 		Task<List<TOIncMastDto>> GetAllTOIncMast();
 		Task<int> AddTOIncMast(TOIncMastDto tOIncMast);
 		Task<int> UpdateTOIncMast(TOIncMastDto tOIncMast);
-		Task<int> DeleteTIncMast(short TinCode);
+		Task<int> DeleteTIncMast(short TOIN_Code);
 	}
 }

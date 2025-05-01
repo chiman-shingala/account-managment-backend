@@ -12,7 +12,7 @@ namespace Acc.Services.Interfaces.Price_Para
 		Task<List<TIncMastDto>> GetAllTIncMast();
 		Task<int> AddTIncMast(TIncMastDto incMast);
 		Task<int> UpdateTIncMast(TIncMastDto incMast);
-		Task<int> DeleteTIncMast(short TinCode);
+		Task<int> DeleteTIncMast(short TIN_Code);
 
 	}
 }

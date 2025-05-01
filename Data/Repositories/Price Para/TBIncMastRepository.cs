@@ -31,9 +31,9 @@ namespace Acc.Data.Repositories
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_TBIncMastSave", tBIncMast);
 		}
-		public async Task<int> DeleteTBIncMast(short TbinCode)
+		public async Task<int> DeleteTBIncMast(short TBIN_Code)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilTBIncMastDel", new { TbinCode });
+			return await _dRepository.ExecuteAsyncQuery("SP_UtilTBIncMastDel", new { TBIN_Code });
 		}
 	}
 }

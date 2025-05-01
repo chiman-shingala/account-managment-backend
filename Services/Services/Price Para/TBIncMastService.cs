@@ -29,9 +29,9 @@ namespace Acc.Services.Services.Price_Para
 		{
 			return await _tBIncMast.UpdateTBIncMast(tBIncMast);
 		}
-		public async Task<int> DeleteTBIncMast(short TbinCode)
+		public async Task<int> DeleteTBIncMast(short TBIN_Code)
 		{
-			return await _tBIncMast.DeleteTBIncMast(TbinCode);
+			return await _tBIncMast.DeleteTBIncMast(TBIN_Code);
 		}
 	}
 }

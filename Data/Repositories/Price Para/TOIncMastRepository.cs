@@ -37,9 +37,9 @@ namespace Acc.Data.Repositories
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_TOIncMastSave", tOIncMast);
 		}
-		public async Task<int> DeleteTOIncMast(short ToinCode)
+		public async Task<int> DeleteTOIncMast(short TOIN_Code)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilTOIncMastDel", new { ToinCode });
+			return await _dRepository.ExecuteAsyncQuery("SP_UtilTOIncMastDel", new { TOIN_Code });
 		}
 	}
 }

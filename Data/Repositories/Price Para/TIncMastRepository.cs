@@ -30,9 +30,9 @@ namespace Acc.Data.Repositories
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_TIncMastSave", incMast);
 		}
-		public async Task<int> DeleteTIncMast(short TinCode)
+		public async Task<int> DeleteTIncMast(short TIN_Code)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilTIncMastDel", new { TinCode });
+			return await _dRepository.ExecuteAsyncQuery("SP_UtilTIncMastDel", new { TIN_Code });
 		}
 	}
 }

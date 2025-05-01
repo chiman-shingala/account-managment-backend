@@ -12,6 +12,6 @@ namespace Acc.Services.Interfaces.Price_Para
 		Task<List<TBIncMastDto>> GetAllTBIncMast();
 		Task<int> AddTBIncMast(TBIncMastDto tBIncMast);
 		Task<int> UpdateTBIncMast(TBIncMastDto tBIncMast);
-		Task<int> DeleteTBIncMast(short TbinCode);
+		Task<int> DeleteTBIncMast(short TBIN_Code);
 	}
 }
