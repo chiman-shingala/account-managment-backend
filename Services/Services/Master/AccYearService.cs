@@ -29,9 +29,9 @@ namespace Acc.Services.Services.Master
 		{
 			return await _accYear.UpdateAccYear(accYear);
 		}
-		public async Task<int> DeleteAccYear(string Comp_Code)
+		public async Task<int> DeleteAccYear(string Comp_Code, int AcYear)
 		{
-			return await _accYear.DeleteAccYear(Comp_Code);
+			return await _accYear.DeleteAccYear(Comp_Code, AcYear);
 		}
 	}
 }

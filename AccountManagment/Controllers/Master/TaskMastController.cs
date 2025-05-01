@@ -41,7 +41,7 @@ namespace Acc.Api.Controllers.Master
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _taskMast.UpdateTaskMast(taskMast), CommonConstants.SUCCESS));
 		}
 		[HttpDelete("delete-task")]
-		public async Task<IActionResult> DeleteTaskMast([FromQuery] int TaskId, int UserId)
+		public async Task<IActionResult> DeleteTaskMast([FromQuery] int TaskId, string UserId)
 		{
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _taskMast.DeleteTaskMast(TaskId,UserId), CommonConstants.SUCCESS));
 		}

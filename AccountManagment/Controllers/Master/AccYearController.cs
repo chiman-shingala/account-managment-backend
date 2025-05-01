@@ -35,9 +35,9 @@ namespace Acc.Api.Controllers.Master
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _accYear.UpdateAccYear(accYear), CommonConstants.SUCCESS));
 		}
 		[HttpDelete("delete-accyear")]
-		public async Task<IActionResult> DeleteCut([FromQuery] string Comp_Code)
+		public async Task<IActionResult> DeleteCut([FromQuery] string Comp_Code, int AcYear)
 		{
-			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _accYear.DeleteAccYear(Comp_Code), CommonConstants.SUCCESS));
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _accYear.DeleteAccYear(Comp_Code, AcYear), CommonConstants.SUCCESS));
 		}
 	}
 }

@@ -33,6 +33,10 @@ namespace Acc.Api.Controllers.Master
 		[HttpPost("update-colour")]
 		public async Task<IActionResult> UpdateColour([FromBody] ColMastDto colMast)
 		{
+			if(colMast.C_Code == 0)
+			{
+				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, "C_Code can't be zero or null"));
+			}
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _mastService.UpdateColour(colMast), CommonConstants.SUCCESS));
 		}
 		[HttpDelete("delete-colour")]

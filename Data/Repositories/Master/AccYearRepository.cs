@@ -1,6 +1,7 @@
 ﻿using Acc.Data.Interfaces.IMaster;
 using Acc.Data.Repository.Interface;
 using Acc.Shared.Dtos;
+using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,9 @@ namespace Acc.Data.Repositories.Master
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_UtilAccYearUpdateAccYear", accYearDto);
 		}
-		public async Task<int> DeleteAccYear(string Comp_Code)
+		public async Task<int> DeleteAccYear(string Comp_Code, int AcYear)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilAccYearDel", new { Comp_Code });
+			return await _dRepository.ExecuteAsyncQuery("SP_UtilAccYearDel", new { Comp_Code, AcYear });
 		}
 	}
 }
