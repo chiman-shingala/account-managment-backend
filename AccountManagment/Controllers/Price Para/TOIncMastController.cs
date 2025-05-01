@@ -35,9 +35,9 @@ namespace Acc.Api.Controllers.Price_Para
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _tOIncMast.UpdateTOIncMast(tOIncMast), CommonConstants.SUCCESS));
 		}
 		[HttpDelete("delete-tOInc")]
-		public async Task<IActionResult> DeleteTOIncMastMast([FromQuery] short TinCode)
+		public async Task<IActionResult> DeleteTOIncMastMast([FromQuery] short TOIN_Code)
 		{
-			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _tOIncMast.DeleteTIncMast(TinCode), CommonConstants.SUCCESS));
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _tOIncMast.DeleteTIncMast(TOIN_Code), CommonConstants.SUCCESS));
 		}
 	}
 }

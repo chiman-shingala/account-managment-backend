@@ -35,9 +35,9 @@ namespace Acc.Api.Controllers.Price_Para
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _tBIncMast.UpdateTBIncMast(tBIncMast), CommonConstants.SUCCESS));
 		}
 		[HttpDelete("delete-tBInc")]
-		public async Task<IActionResult> DeleteTOIncMastMast([FromQuery] short TbinCode)
+		public async Task<IActionResult> DeleteTOIncMastMast([FromQuery] short TBIN_Code)
 		{
-			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _tBIncMast.DeleteTBIncMast(TbinCode), CommonConstants.SUCCESS));
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _tBIncMast.DeleteTBIncMast(TBIN_Code), CommonConstants.SUCCESS));
 		}
 	}
 }
