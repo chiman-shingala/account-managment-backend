@@ -12,6 +12,6 @@ namespace Acc.Services.Interfaces.Price_Para
 		Task<List<HAMastDto>> GetAllHAMast();
 		Task<int> AddHAMast(HAMastDto HAMast);
 		Task<int> UpdateHAMast(HAMastDto HAMast);
-		Task<int> DeleteHAMast(short EF_Code);
+		Task<int> DeleteHAMast(short HA_Code);
 	}
 }

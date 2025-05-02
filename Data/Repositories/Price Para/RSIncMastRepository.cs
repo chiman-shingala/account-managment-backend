@@ -26,7 +26,7 @@ namespace Acc.Data.Repositories
 		}
 		public async Task<List<RsincMastDto>> GetAllRSIncMast()
 		{
-			return await _dRepository.GetAll<RsincMastDto>("SP_MastSOIncMastFill");
+			return await _dRepository.GetAll<RsincMastDto>("SP_MastRSIncMastFill");
 		}
 		public async Task<int> AddRSIncMast(RsincMastDto rsincMast)
 		{
