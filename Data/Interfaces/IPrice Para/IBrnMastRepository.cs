@@ -13,7 +13,7 @@ namespace Acc.Data.Interfaces
 		Task<List<BrnMastDto>> GetAllBrnMast();
 		Task<int> AddBrnMast(BrnMastDto brnMast);
 		Task<int> UpdateBrnMast(BrnMastDto brnMast);
-		Task<int> DeleteBrnMast(short brnCode);
+		Task<int> DeleteBrnMast(short BRN_Code);
 
 	}
 }

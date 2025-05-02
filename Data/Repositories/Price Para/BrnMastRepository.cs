@@ -36,9 +36,9 @@ namespace Acc.Data.Repositories
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_BrnMastSave", brnMast);
 		}
-		public async Task<int> DeleteBrnMast(short brnCode)
+		public async Task<int> DeleteBrnMast(short BRN_Code)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilBrnMastDel", new { brnCode });
+			return await _dRepository.ExecuteAsyncQuery("SP_UtilBrnMastDel", new { BRN_Code });
 		}
 	}
 }

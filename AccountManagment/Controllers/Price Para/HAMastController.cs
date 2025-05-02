@@ -35,9 +35,9 @@ namespace Acc.Api.Controllers.Price_Para
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _hAMast.UpdateHAMast(hAMast), CommonConstants.SUCCESS));
 		}
 		[HttpDelete("delete-HAMast")]
-		public async Task<IActionResult> DeleteHAMast([FromQuery] short EF_Code)
+		public async Task<IActionResult> DeleteHAMast([FromQuery] short HA_Code)
 		{
-			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _hAMast.DeleteHAMast(EF_Code), CommonConstants.SUCCESS));
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _hAMast.DeleteHAMast(HA_Code), CommonConstants.SUCCESS));
 		}
 	}
 }

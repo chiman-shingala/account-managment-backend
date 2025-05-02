@@ -30,9 +30,9 @@ namespace Acc.Services.Services.Price_Para
 		{
 			return await _hAMast.UpdateHAMast(HAMast);
 		}
-		public async Task<int> DeleteHAMast(short EF_Code)
+		public async Task<int> DeleteHAMast(short HA_Code)
 		{
-			return await _hAMast.DeleteHAMast(EF_Code);
+			return await _hAMast.DeleteHAMast(HA_Code);
 		}
 	}
 }
