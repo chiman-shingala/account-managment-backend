@@ -57,5 +57,10 @@ namespace Acc.Api.Controllers.Master
 			else
 				return new JsonResult(new ApiResponse(false, HttpStatusCode.InternalServerError, null, "An unexpected error occurred."));
 		}
+		[HttpGet("get-grType")]
+		public async Task<IActionResult> GetGrpType()
+		{
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _aGrpMast.GetGrpType(), CommonConstants.SUCCESS));
+		}
 	}
 }

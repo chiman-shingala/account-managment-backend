@@ -14,5 +14,6 @@ namespace Acc.Data.Interfaces.IMaster
 		Task<int> UpdateAGrp(AGrpMastDto aGrpMast);
 		Task<int> DeleteAGrp(int AGR_Code);
 		Task<int> NewIdAGrpMast();
+		Task<List<GRTypeDto>> GetGrpType();
 	}
 }
