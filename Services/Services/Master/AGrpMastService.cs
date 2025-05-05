@@ -38,5 +38,9 @@ namespace Acc.Services.Services.Master
 		{
 			return await _aGrpMast.DeleteAGrp(AGR_Code);
 		}
+		public async Task<List<GRTypeDto>> GetGrpType()
+		{
+			return await _aGrpMast.GetGrpType();
+		}
 	}
 }
