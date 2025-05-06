@@ -10,8 +10,9 @@ namespace Acc.Data.Interfaces.IMaster
 	public  interface IParMastRepository
 	{
 		Task<List<ParMastDto>> GetAllParMast(ParMastFillDto parMastFill);
-		Task<int> AddParMast(ParMastDto parMast);
-		Task<int> UpdateParMast(ParMastDto parMast);
+		Task<int> AddParMast(ParMastSaveDto parMast);
+		Task<int> UpdateParMast(ParMastSaveDto parMast);
 		Task<int> DeleteParMast(string P_Code, int Acyear, string Comp_Code);
+		Task<string> ParMastNextCode(string initChar, int acYear, string compCode);
 	}
 }
