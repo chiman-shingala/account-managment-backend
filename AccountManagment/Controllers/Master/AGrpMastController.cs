@@ -69,11 +69,11 @@ namespace Acc.Api.Controllers.Master
 			var result = await _aGrpMast.DeleteAGrp(AGR_Code);
 			if (result == 1)
 			{
-				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, "Group is fixed and cannot be deleted."));
+				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, "Can't Delete System Group"));
 			}
 			else if (result == 2)
 			{
-				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, "Group has sub-groups and cannot be deleted."));
+				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, "Other Group Exist Under This Group"));
 			}else if (result == 0)
 			{
 				return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, "Record Deleted Succesfully", CommonConstants.SUCCESS));
