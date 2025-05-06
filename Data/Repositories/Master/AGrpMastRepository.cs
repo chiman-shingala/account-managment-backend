@@ -45,5 +45,9 @@ namespace Acc.Data.Repositories.Master
 				return parameters;
 			},"@Out");
 		}
+		public async Task<List<GRTypeDto>> GetGrpType()
+		{
+			return await _dRepository.GetAll<GRTypeDto>("SP_GrpTypeDisp");
+		}
 	}
 }

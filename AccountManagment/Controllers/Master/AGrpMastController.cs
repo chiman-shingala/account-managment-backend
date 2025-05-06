@@ -32,11 +32,35 @@ namespace Acc.Api.Controllers.Master
 		[HttpPost("add-agrp")]
 		public async Task<IActionResult> AddAGrp([FromBody] AGrpMastDto aGrpMast)
 		{
+			if(aGrpMast.Agr_Code == 0)
+			{
+				return new JsonResult(new ApiResponse(true, HttpStatusCode.BadRequest, null, "Account Group Is Required"));
+			}
+			if(string.IsNullOrWhiteSpace(aGrpMast.Agr_Name))
+			{
+				return new JsonResult(new ApiResponse(true, HttpStatusCode.BadRequest, null, "Account Group Name Is Required"));
+			}
+			if (aGrpMast.Gr_Type == 0)
+			{
+				return new JsonResult(new ApiResponse(true, HttpStatusCode.BadRequest, null, "Group Type Is Required"));
+			}
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _aGrpMast.AddAGrp(aGrpMast), CommonConstants.SUCCESS));
 		}
 		[HttpPost("update-agrp")]
 		public async Task<IActionResult> UpdateAGrp([FromBody] AGrpMastDto aGrpMast)
 		{
+			if (aGrpMast.Agr_Code == 0)
+			{
+				return new JsonResult(new ApiResponse(true, HttpStatusCode.BadRequest, null, "Account Group Is Required"));
+			}
+			if (string.IsNullOrWhiteSpace(aGrpMast.Agr_Name))
+			{
+				return new JsonResult(new ApiResponse(true, HttpStatusCode.BadRequest, null, "Account Group Name Is Required"));
+			}
+			if (aGrpMast.Gr_Type == 0)
+			{
+				return new JsonResult(new ApiResponse(true, HttpStatusCode.BadRequest, null, "Group Type Is Required"));
+			}
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _aGrpMast.UpdateAGrp(aGrpMast), CommonConstants.SUCCESS));
 		}
 		[HttpDelete("delete-agrp")]
