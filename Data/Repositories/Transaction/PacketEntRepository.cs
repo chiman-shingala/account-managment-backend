@@ -38,5 +38,15 @@ namespace Acc.Data.Repositories.Transaction
 				return parameters;
 			}, "Out");
 		}
+		public async Task<int> PacketExists(string PId, string Comp_Code)
+		{
+			return await _dRepository.ExecuteAsyncQueryWithOutputParameter<int>("SP_TrnPacketExists", parameters =>
+			{
+				parameters.Add("@PId", PId, DbType.String);
+				parameters.Add("@Comp_Code", Comp_Code, DbType.String);
+				parameters.Add("@Out", dbType: DbType.Int32, direction: ParameterDirection.Output);
+				return parameters;
+			}, "Out");			
+		}
 	}
 }

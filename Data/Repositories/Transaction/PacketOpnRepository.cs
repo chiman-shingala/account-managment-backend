@@ -28,6 +28,6 @@ namespace Acc.Data.Repositories.Transaction
 		public async Task<int> UpdatePacketOpn(PktOpnDto pktOpn)
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_PktOpnSave", pktOpn);
-		}			
+		}					 		
 	}
 }
