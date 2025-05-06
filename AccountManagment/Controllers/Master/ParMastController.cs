@@ -25,12 +25,12 @@ namespace Acc.Api.Controllers.Master
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parMast.GetAllParMast(parMastFill), CommonConstants.SUCCESS));
 		}
 		[HttpPost("add-party")]
-		public async Task<IActionResult> AddParMast([FromBody] ParMastDto parMast)
+		public async Task<IActionResult> AddParMast([FromBody] ParMastSaveDto parMast)
 		{
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parMast.AddParMast(parMast), CommonConstants.SUCCESS));
 		}
 		[HttpPost("update-party")]
-		public async Task<IActionResult> UpdateParMast([FromBody] ParMastDto parMast)
+		public async Task<IActionResult> UpdateParMast([FromBody] ParMastSaveDto parMast)
 		{
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parMast.UpdateParMast(parMast), CommonConstants.SUCCESS));
 		}
@@ -38,6 +38,11 @@ namespace Acc.Api.Controllers.Master
 		public async Task<IActionResult> DeleteParMast([FromQuery] string P_Code, int Acyear, string Comp_Code)
 		{
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parMast.DeleteParMast(P_Code,Acyear,Comp_Code), CommonConstants.SUCCESS));
+		}
+		[HttpGet("next-code")]
+		public async Task<IActionResult> ParMastNextCode([FromQuery] string initChar, int acYear, string compCode)
+		{
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parMast.ParMastNextCode(initChar, acYear, compCode), CommonConstants.SUCCESS));
 		}
 	}
 }
