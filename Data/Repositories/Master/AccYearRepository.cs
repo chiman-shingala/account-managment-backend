@@ -24,11 +24,11 @@ namespace Acc.Data.Repositories.Master
 		}
 		public async Task<int> AddAccYear(AccYearDto accYearDto)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilAccYearCreateAccYear", accYearDto);
+			return await _dRepository.ExecuteAsyncQuery("SP_AccYearSave", accYearDto);
 		}
 		public async Task<int> UpdateAccYear(AccYearDto accYearDto)
 		{
-			return await _dRepository.ExecuteAsyncQuery("SP_UtilAccYearUpdateAccYear", accYearDto);
+			return await _dRepository.ExecuteAsyncQuery("SP_AccYearSave", accYearDto);
 		}
 		public async Task<int> DeleteAccYear(string Comp_Code, int AcYear)
 		{
