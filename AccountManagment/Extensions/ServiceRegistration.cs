@@ -134,6 +134,8 @@ namespace Acc.Api.Extensions
 			services.AddScoped<IGirdMastService, GirdMastService>();
 			services.AddScoped<IPacketOpnRepository, PacketOpnRepository>();
 			services.AddScoped<IPacketOpnService, PacketOpnService>();
+			services.AddScoped<IPurEntRepository, PurEntRepository>();
+			services.AddScoped<IPurEntService, PurEntService>();
 			return services;
 		}
 	}
