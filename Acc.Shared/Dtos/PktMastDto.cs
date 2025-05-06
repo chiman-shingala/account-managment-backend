@@ -11,9 +11,9 @@ namespace Acc.Shared.Dtos
 		public string PId { get; set; } = null!;
 		public string Comp_Code { get; set; } = null!;
 		public decimal Carat { get; set; }
-		public string S_Code { get; set; } = null!;
-		public short Q_Code { get; set; }
-		public short C_Code { get; set; }
+		public string? S_Code { get; set; } = null!;
+		public short? Q_Code { get; set; }
+		public short? C_Code { get; set; }
 		public short CT_Code { get; set; }
 		public short Po_Code { get; set; }
 		public short Sy_Code { get; set; }
@@ -54,7 +54,7 @@ namespace Acc.Shared.Dtos
 		public string I_Code { get; set; } = null!;
 		public string D_Code { get; set; } = null!;
 		public string Oper { get; set; } = null!;
-		public short SZ_Code { get; set; }
+		public short? SZ_Code { get; set; }
 		public decimal Margin { get; set; }
 		public string CnCy { get; set; } = null!;
 		public decimal Conv { get; set; }
