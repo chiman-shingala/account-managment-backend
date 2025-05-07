@@ -21,6 +21,10 @@ namespace Acc.Services.Services.Master
 		{
 			return await _parMast.GetAllParMast(parMastFill);
 		}
+		public async Task<List<TypeMastDto>> GetAllTypeMast()
+		{
+			return await _parMast.GetAllTypeMast();
+		}
 		public async Task<int> AddParMast(ParMastSaveDto parMast)
 		{
 			return await _parMast.AddParMast(parMast);

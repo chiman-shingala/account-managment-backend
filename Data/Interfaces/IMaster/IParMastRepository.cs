@@ -14,5 +14,6 @@ namespace Acc.Data.Interfaces.IMaster
 		Task<int> UpdateParMast(ParMastSaveDto parMast);
 		Task<int> DeleteParMast(string P_Code, int Acyear, string Comp_Code);
 		Task<string> ParMastNextCode(string initChar, int acYear, string compCode);
+		Task<List<TypeMastDto>> GetAllTypeMast();
 	}
 }

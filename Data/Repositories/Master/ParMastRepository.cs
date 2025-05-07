@@ -22,6 +22,10 @@ namespace Acc.Data.Repositories.Master
 		{			
 			return await _dRepository.GetAll<ParMastDto>("SP_MastParMastFill", parMastFill);
 		}
+		public async Task<List<TypeMastDto>> GetAllTypeMast()
+		{
+			return await _dRepository.GetAll<TypeMastDto>("SP_GetTypeMast");
+		}
 		public async Task<int> AddParMast(ParMastSaveDto parMast)
 		{
 			return await _dRepository.ExecuteAsyncQuery("SP_ParMastSave", parMast);
