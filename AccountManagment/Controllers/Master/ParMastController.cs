@@ -24,6 +24,11 @@ namespace Acc.Api.Controllers.Master
 		{
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parMast.GetAllParMast(parMastFill), CommonConstants.SUCCESS));
 		}
+		[HttpGet("get-type")]
+		public async Task<IActionResult> GetAllTypeMast()
+		{
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parMast.GetAllTypeMast(), CommonConstants.SUCCESS));
+		}
 		[HttpPost("add-party")]
 		public async Task<IActionResult> AddParMast([FromBody] ParMastSaveDto parMast)
 		{
