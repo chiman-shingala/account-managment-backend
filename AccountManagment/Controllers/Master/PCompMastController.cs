@@ -18,16 +18,16 @@ namespace Acc.Api.Controllers.Master
 		public PCompMastController(IPCompMastService pCompMast)
 		{
 			_pCompMast = pCompMast;
-		}
-		//[HttpGet("get-party")]
-		//public async Task<IActionResult> GetAllParMast([FromQuery] ParMastFillDto parMastFill)
-		//{
-		//	return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parMast.GetAllParMast(parMastFill), CommonConstants.SUCCESS));
-		//}
+		}		
 		[HttpPost("add-pComp")]
 		public async Task<IActionResult> AddPCompMast([FromBody] PCompMastDto pCompMast)
 		{
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _pCompMast.AddPCompMast(pCompMast), CommonConstants.SUCCESS));
+		}
+		[HttpPost("save-pComp")]
+		public async Task<IActionResult> SavePComp([FromBody] SaveParRequestDto pCompMast)
+		{
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK,await _pCompMast.SaveParAsync(pCompMast), CommonConstants.SUCCESS));
 		}
 		[HttpPost("update-pComp")]
 		public async Task<IActionResult> UpdatePCompMast([FromBody] PCompMastDto pCompMast)

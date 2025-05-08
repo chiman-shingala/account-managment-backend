@@ -12,5 +12,7 @@ namespace Acc.Data.Interfaces.IMaster
 		Task<int> AddPCompMast(PCompMastDto pCompMast);
 		Task<int> UpdatePCompMast(PCompMastDto pCompMast);
 		Task<int> DeletePCompMast(string P_Code, int Acyear, string Comp_Code);
+		Task<int> SaveParMast(ParMastDto parMast);
+		Task SaveParPersonsAsync(SaveParPersonRequestDto request);
 	}
 }
