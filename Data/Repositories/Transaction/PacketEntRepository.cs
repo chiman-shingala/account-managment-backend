@@ -44,14 +44,14 @@ namespace Acc.Data.Repositories.Transaction
 				return parameters;
 			}, "Out");
 		}
-		public async Task<int> UpdateCostCont(PktMastDto pktMastDto)
+		public async Task<List<int>> UpdateCostCont(PktMastDto pktMastDto)
 		{			
 			var parameters = new DynamicParameters();
 			parameters.Add("@PId", pktMastDto.PId);
 			parameters.Add("@Comp_Code", pktMastDto.Comp_Code);
 			parameters.Add("@DispUpd", "U");
 			parameters.Add("@AcYear", pktMastDto.AcYear);
-			return await _dRepository.ExecuteAsyncQuery("SP_TrnPacketEntUpdateOrDispCost", parameters);
+			return await _dRepository.GetAll<int>("SP_TrnPacketEntUpdateOrDispCost", parameters);
 		}
 		public async Task<int> FindNewPId(string Comp_Code)
 		{

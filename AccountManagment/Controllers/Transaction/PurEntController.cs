@@ -28,7 +28,11 @@ namespace Acc.Api.Controllers.Transaction
 		[HttpPost("save-purchaseEntry")]
 		public async Task<IActionResult> SavePurchaseAsync(SavePurchaseRequestDto requestDto)
 		{
-			var result = await _purEntService.SavePurchaseAsync(requestDto);			
+			var result = await _purEntService.SavePurchaseAsync(requestDto);	
+			if(result != "Record Succesfully")
+			{
+				return BadRequest(new ApiResponse(false, HttpStatusCode.BadRequest, result, CommonConstants.FAIL));
+			}
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, result,CommonConstants.SUCCESS));
 		}
 		[HttpDelete("delete-purchaseEntry")]
