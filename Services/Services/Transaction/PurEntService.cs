@@ -22,10 +22,58 @@ namespace Acc.Services.Services.Transaction
 		{
 			try
 			{
-				if(PurchaseValidation(requestDto,out string errorMessage) == false)
+				if (!requestDto.CanInv) 
 				{
-					return errorMessage;
+					//if (PurchaseValidation(requestDto, out string errorMessage) == false)
+					//{
+					//	return errorMessage;
+					//}
+
+					if (requestDto.Amount == 0)
+					{
+						return "Total Amount Is Required";
+					}
+
+					// Check if any purchase entry detail has zero amount
+					bool blnDelMsg = false;
+					if (requestDto.PurchaseEntryDetails != null)
+					{
+						foreach (var ugRow in requestDto.PurchaseEntryDetails)
+						{
+							if (ugRow.Amount == 0)
+							{
+								blnDelMsg = true;
+								break;
+							}
+						}
+					}
+
+					if (blnDelMsg)
+					{
+						if (!requestDto.Confirmed) 
+						{
+							return "Records which have 0 (Zero) Amount will be deleted. Please confirm.";
+						}
+					}
 				}
+				else
+				{
+					if (requestDto.TrnNo == 0)
+					{
+						return "Transaction No. is required";
+					}
+
+					if (string.IsNullOrWhiteSpace(requestDto.TrnDate.ToString()))
+					{
+						return "Date is required";
+					}
+
+					if (string.IsNullOrWhiteSpace(requestDto.P_Code))
+					{
+						return "Party is required";
+					}
+				}
+
 				//if (Global.IsWithinAccYear(Val.DTDBDate(txtTrnDate.Text)) == false)
 				//{
 				//	Val.Message("Transaction Is Not In Current Accounting Year", "", MessageBoxIcon.Information);
@@ -184,9 +232,9 @@ namespace Acc.Services.Services.Transaction
 						if (string.IsNullOrEmpty(item.PId)) continue;
 						PktMastDto pktMastDto = new PktMastDto
 						{
-							PId = item.PId,
-							Comp_Code = item.Comp_Code,
-							AcYear = item.AcYear,
+							PId = requestDto.Pid,
+							Comp_Code = requestDto.Comp_Code,
+							AcYear = requestDto.AcYear,
 						};
 						await _packetEntRepository.UpdateCostCont(pktMastDto);
 					}
@@ -266,13 +314,13 @@ namespace Acc.Services.Services.Transaction
 		{
 			errorMessage = string.Empty;
 
-			if (request.TrnDate == DateTime.MinValue)
+			if (request.TrnDate == null)
 			{
 				errorMessage = "Transaction Date is required.";
 				return false;
 			}
 
-			if (request.OType != "X" && string.IsNullOrWhiteSpace(request.DP_Code))
+			if (request.SType != "X" && string.IsNullOrWhiteSpace(request.DP_Code))
 			{
 				errorMessage = "Department is required.";
 				return false;
@@ -284,7 +332,7 @@ namespace Acc.Services.Services.Transaction
 				return false;
 			}
 
-			if (request.SType == "D" && request.S_Carat == 0)
+			if (request.Oper == "D" && request.S_Carat == 0)
 			{
 				errorMessage = "Total Carat is required.";
 				return false;
@@ -296,11 +344,11 @@ namespace Acc.Services.Services.Transaction
 				return false;
 			}
 
-			if (request.PayAmt == 0)
-			{
-				errorMessage = "Round Amount is required.";
-				return false;
-			}
+			//if (request.PayAmt == 0)
+			//{
+			//	errorMessage = "Round Amount is required.";
+			//	return false;
+			//}
 
 			if (request.Conv == 0)
 			{
