@@ -1,6 +1,7 @@
 
 
 using Dapper;
+using System.Data;
 using static Dapper.SqlMapper;
 
 namespace Acc.Data.Repository.Interface
@@ -22,7 +23,10 @@ namespace Acc.Data.Repository.Interface
         Task<T?> ExecuteAsyncQueryWithJson<T>(string storeProc, string param);
         Task<T?> QuerySingleOrDefaultAsync<T>(string storedProcedure, object? param = null);
         Task<T?> ExecuteScalarAsync<T>(string storeProc);
-        Task<T> ExecuteAsyncQueryWithOutputParameter<T>(string storeProc, Func<DynamicParameters, DynamicParameters> addParameters, string outputParamName);
+		Task<int> ExecuteScalarAsyncQuery(string storeProc, object? param = null);
+
+		Task<T> ExecuteAsyncQueryWithOutputParameter<T>(string storeProc, Func<DynamicParameters, DynamicParameters> addParameters, string outputParamName);
+        IDbConnection GetOpenConnection();
 
 	}
 }
