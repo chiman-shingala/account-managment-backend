@@ -2,12 +2,14 @@
 using Acc.Services.Interfaces.Transaction;
 using Acc.Shared.Dtos;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace Acc.Api.Controllers.Transaction
 {
+	[Authorize]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class PacketEntController : ControllerBase
@@ -18,14 +20,28 @@ namespace Acc.Api.Controllers.Transaction
 		{
 			_packetEntService = packetEntService;
 		}
-		[HttpPost("find-rap-value")]
+		[HttpGet("get-allPacketEnt")]
+		public async Task<IActionResult> GetAllPacketEnt([FromQuery] string PId, string Comp_Code)
+		{
+			var result = await _packetEntService.GetAllPacketEnt(PId, Comp_Code);
+			if (result.Count > 0)
+			{
+				return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, result, CommonConstants.SUCCESS));
+			}
+			else
+			{
+				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, CommonConstants.FAIL));
+			}
+		}
+
+		[HttpPost("find-rapValue")]
 		public async Task<IActionResult> FindRapValue([FromBody] RapDetailsRequestDto request)
 		{
 			var result = await _packetEntService.GetRapDetailsAsync(request.Packet, request.Codes, request.ReturnDetail);
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, result, CommonConstants.SUCCESS));
 
 		}
-		[HttpPost("add-packet-ent")]
+		[HttpPost("add-packetEnt")]
 		public async Task<IActionResult> AddPacketEnt([FromBody] PktMastDto packetEnt)
 		{
 			if(packetEnt.PId == string.Empty)
@@ -42,7 +58,7 @@ namespace Acc.Api.Controllers.Transaction
 				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, CommonConstants.FAIL));
 			}
 		}
-		[HttpPost("update-packet-ent")]
+		[HttpPost("update-packetEnt")]
 		public async Task<IActionResult> UpdatePacketEnt([FromBody] PktMastDto packetEnt)
 		{
 			var result = await _packetEntService.UpdatePacketEnt(packetEnt);
@@ -55,7 +71,7 @@ namespace Acc.Api.Controllers.Transaction
 				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, CommonConstants.FAIL));
 			}
 		}
-		[HttpDelete("delete-packet-ent")]
+		[HttpDelete("delete-packetEnt")]
 		public async Task<IActionResult> DeletePacketEnt(string PId, string Comp_Code)
 		{
 			var result = await _packetEntService.DeletePacketEnt(PId, Comp_Code);
@@ -112,5 +128,6 @@ namespace Acc.Api.Controllers.Transaction
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, result, CommonConstants.SUCCESS));
 
 		}
+		
 	}
 }

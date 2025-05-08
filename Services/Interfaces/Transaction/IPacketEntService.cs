@@ -9,6 +9,7 @@ namespace Acc.Services.Interfaces.Transaction
 {
 	public interface IPacketEntService
 	{
+		Task<List<PktMastDto>> GetAllPacketEnt(string PId, string Comp_Code);
 		Task<double> FindRapAsync(PacketEntDto pc1);
 		Task<double> FindRapDisc(PacketEntDto pc1);
 		Task<double> FindFluoDisc(PacketEntDto pc1);

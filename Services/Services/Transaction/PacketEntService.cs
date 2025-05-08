@@ -51,6 +51,10 @@ namespace Acc.Services.Services.Transaction
 			_hAMastRepository = hAMastRepository;
 			_packetEntRepository = packetEntRepository;
 		}
+		public async Task<List<PktMastDto>> GetAllPacketEnt(string PId, string Comp_Code)
+		{
+			return await _packetEntRepository.GetAllPacketEnt(PId, Comp_Code);
+		}
 		public async Task<double> FindRapAsync(PacketEntDto pc1)
 		{
 			double doubrap = 0;
@@ -225,5 +229,6 @@ namespace Acc.Services.Services.Transaction
 		{
 			return await _packetEntRepository.FindNewPId(Comp_Code);
 		}
+		
 	}
 }
