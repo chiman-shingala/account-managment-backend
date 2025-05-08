@@ -31,5 +31,11 @@ namespace Acc.Api.Controllers.Transaction
 			var result = await _purEntService.SavePurchaseAsync(requestDto);			
 			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, result,CommonConstants.SUCCESS));
 		}
+		[HttpDelete("delete-purchaseEntry")]
+		public async Task<IActionResult> DeletePurchase([FromQuery] int TrnNo,int AcYear,string Comp_Code)
+		{
+			var result = await _purEntService.DeletePurEnt(TrnNo,AcYear,Comp_Code);
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, result, CommonConstants.SUCCESS));
+		}
 	}
 }

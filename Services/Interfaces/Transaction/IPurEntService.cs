@@ -11,5 +11,6 @@ namespace Acc.Services.Interfaces.Transaction
 	{
 		Task<int> AddSum(PBillHDto pBillHDto);
 		Task<string> SavePurchaseAsync(SavePurchaseRequestDto requestDto);
+		Task<string> DeletePurEnt(int TrnNo, int AcYear, string Comp_Code);
 	}
 }

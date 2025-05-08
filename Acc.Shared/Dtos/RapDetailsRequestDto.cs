@@ -8,8 +8,8 @@ namespace Acc.Shared.Dtos
 {
 	public class RapDetailsRequestDto
 	{
-		public PacketEntDto Packet { get; set; }
-		public RapDetailInputDto Codes { get; set; }
+		public PacketEntDto? Packet { get; set; }
+		public RapDetailInputDto? Codes { get; set; }
 		public bool ReturnDetail { get; set; }
 	}
 }

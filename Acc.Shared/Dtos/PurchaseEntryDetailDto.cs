@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace Acc.Shared.Dtos
 {
 	public class PurchaseEntryDetailDto
-	{		
+	{
+		public int AcYear { get; set; }
+		public string? Comp_Code { get; set; }
 		public int SrNo { get; set; }
 		public string? S_Code { get; set; } // Shape Code
 		public int Q_Code { get; set; } // Quality Code

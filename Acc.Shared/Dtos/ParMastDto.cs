@@ -36,7 +36,7 @@ namespace Acc.Shared.Dtos
 
 		public byte[]? Pphoto { get; set; }
 
-		public int? AgrCode { get; set; }
+		public int? AGR_Code { get; set; }
 
 		public string? VatNo { get; set; }
 
