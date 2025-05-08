@@ -294,7 +294,7 @@ namespace Acc.Data.Repositories.Transaction
 
 			return 0;
 		}
-		public async void SaveDetPktEnt(SavePurchaseRequestDto packetInputs)
+		public async Task SaveDetPktEnt(SavePurchaseRequestDto packetInputs)
 		{
 			foreach (var pBillLDto in packetInputs.PurchaseEntryDetails)
 			{
@@ -448,66 +448,36 @@ namespace Acc.Data.Repositories.Transaction
 			packet.ParPId = packetInputs.ParPId;
 
 			await _packetEnt.AddPacketEnt(packet);
-		}
-		public List<PBillLDto> GetPBillLData(PBillHDto pBillHDto)
-		{			
-			return new List<PBillLDto>
-			{
-				new PBillLDto
-				{
-					TrnNo = (int)pBillHDto.TrnNo,
-					AcYear = pBillHDto.AcYear,
-					Comp_Code = pBillHDto.Comp_Code,			
-					TrnDate = pBillHDto.TrnDate,
-					S_Code = "0",
-				}
-			};
-		}
-		public List<PBillLDto> GenerateDetailsFromHeader(PBillHDto pBillHDto)
+		}		
+		public async Task<string> DeletePurEnt(int TrnNo, int AcYear,string Comp_Code)
 		{
-			var details = new List<PBillLDto>();
+			var parameters = new DynamicParameters();
+			parameters.Add("TrnNo", TrnNo);
+			parameters.Add("AcYear", AcYear);
+			parameters.Add("Comp_Code", Comp_Code);
+			parameters.Add("@Out", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-			var detail = new PBillLDto
+			await _dRepository.ExecuteAsyncQuery("SP_PurEntDel", parameters);
+			var result = parameters.Get<int>("@Out");
+			if (result == 0) return result.ToString();
+
+			if (result == 1)
 			{
-				TrnNo = (int)pBillHDto.TrnNo,
-				SrNo = 1,
-				AcYear = pBillHDto.AcYear,
-				Comp_Code = pBillHDto.Comp_Code,
-				TrnDate = pBillHDto.TrnDate,
-				Conv = pBillHDto.Conv,				
-				CnCy = pBillHDto.CnCy,
-				S_Carat = pBillHDto.S_Carat,
-				Br_Code = pBillHDto.Br_Code,
-				Brper = pBillHDto.Brper,
-				Bramount = pBillHDto.Bramount,
-				Lp1 = pBillHDto.Lp1,
-				Lt1 = pBillHDto.Lt1,
-				Lp2 = pBillHDto.Lp2,
-				Lt2 = pBillHDto.Lt2,
-				Stype = pBillHDto.Stype,
-				Otype = pBillHDto.Otype,
-				Pdis = pBillHDto.Pdis,
-				Pcom = pBillHDto.Pcom,
-				TrnTime = pBillHDto.TrnTime,
-				Amount = pBillHDto.Amount,
-				Gamount = pBillHDto.Gamount,
-				Rem = pBillHDto.Remark,
-				Pid = pBillHDto.PId,
-				AvgRate = pBillHDto.AvgRate,
-				OrgAvgRate = pBillHDto.OrgAvgRate,
-				//not save in db fields
-
-				S_Code = pBillHDto.S_Code,
-				Q_Code = pBillHDto.Q_Code,
-				C_Code = pBillHDto.C_Code,
-				Sz_Code = pBillHDto.Sz_Code,
-				
-				Srate = pBillHDto.Srate,
-				Desc1 = pBillHDto.Desc1,
-			};
-
-			details.Add(detail);
-			return details;
+				return "Purchase Payment Already Done For This Entry";
+			}
+			else if (result == 2)
+			{
+				return "First Delete Purchase Return Entry";
+			}
+			else if (result == 3)
+			{
+				return "Purchase Payment Already Done For This Entry";
+			}
+			else if (result == 999)
+			{
+				return "Delete Entry Again";
+			}
+			return result.ToString();
 		}
 	}
 }

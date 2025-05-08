@@ -14,7 +14,8 @@ namespace Acc.Data.Interfaces.ITransaction
 		Task<int> AddTrnMast(TrnMastDto trnMastDto);
 		Task<int> UpdateTrnMast(TrnMastDto trnMastDto);
 		Task<int> GetInvoiceNo(string InvNo, int AcYear, string Comp_Code, string Oper);
-		void SaveDetPktEnt(SavePurchaseRequestDto packetInputs);
+		Task SaveDetPktEnt(SavePurchaseRequestDto packetInputs);
 		Task<int> SaveDet(SavePurchaseRequestDto pBillHDto);
+		Task<string> DeletePurEnt(int TrnNo, int AcYear, string Comp_Code);
 	}
 }
