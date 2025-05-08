@@ -17,9 +17,9 @@ namespace Acc.Services.Services.Master
 		{
 			_parPktMast = parPktMast;
 		}
-		public async Task<List<ParPktMastDto>> GetAllParPktMast()
+		public async Task<List<ParPktMastDto>> GetAllParPktMast(string Comp_Code)
 		{
-			return await _parPktMast.GetAllParPktMast();
+			return await _parPktMast.GetAllParPktMast(Comp_Code);
 		}
 		public async Task<int> AddParPktMast(ParPktMastDto parPktMast)
 		{

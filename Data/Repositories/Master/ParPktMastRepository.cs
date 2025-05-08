@@ -17,9 +17,9 @@ namespace Acc.Data.Repositories.Master
 		{
 			_dRepository = dRepository;
 		}
-		public async Task<List<ParPktMastDto>> GetAllParPktMast()
+		public async Task<List<ParPktMastDto>> GetAllParPktMast(string Comp_Code)
 		{
-			return await _dRepository.GetAll<ParPktMastDto>("SP_MastParPktMastFill");
+			return await _dRepository.GetAll<ParPktMastDto>("SP_MastParPktMastFill",new { Comp_Code });
 		}
 		public async Task<int> AddParPktMast(ParPktMastDto ParPktMast)
 		{

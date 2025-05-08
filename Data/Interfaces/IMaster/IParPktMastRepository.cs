@@ -9,7 +9,7 @@ namespace Acc.Data.Interfaces.IMaster
 {
 	public interface IParPktMastRepository
 	{
-		Task<List<ParPktMastDto>> GetAllParPktMast();
+		Task<List<ParPktMastDto>> GetAllParPktMast(string Comp_Code);
 		Task<int> AddParPktMast(ParPktMastDto ParPktMast);
 		Task<int> UpdateParPktMast(ParPktMastDto ParPktMast);
 		Task<int> DeleteParPktMast(string ParPId, string Comp_Code);

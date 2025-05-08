@@ -9,7 +9,7 @@ namespace Acc.Services.Interfaces.Master
 {
 	public interface IParPktMastService
 	{
-		Task<List<ParPktMastDto>> GetAllParPktMast();
+		Task<List<ParPktMastDto>> GetAllParPktMast(string Comp_Code);
 		Task<int> AddParPktMast(ParPktMastDto parPktMast);
 		Task<int> UpdateParPktMast(ParPktMastDto parPktMast);
 		Task<int> DeleteParPktMast(string ParPId, string Comp_Code);
