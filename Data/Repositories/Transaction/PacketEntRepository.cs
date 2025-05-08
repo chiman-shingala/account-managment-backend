@@ -14,6 +14,13 @@ namespace Acc.Data.Repositories.Transaction
 		{
 			_dRepository = dRepository;
 		}
+		public async Task<List<PktMastDto>> GetAllPacketEnt(string PId,string Comp_Code)
+		{
+			var parameters = new DynamicParameters();
+			parameters.Add("@PId", PId);
+			parameters.Add("@Comp_Code", Comp_Code);
+			return await _dRepository.GetAll<PktMastDto>("SP_TrnPacketEnt", parameters);
+		}
 		public async Task<int> AddPacketEnt(PktMastDto packetEnt)
 		{
 			var result = await _dRepository.ExecuteAsyncQuery("SP_TrnPacketEntSave", packetEnt);

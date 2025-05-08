@@ -9,6 +9,7 @@ namespace Acc.Data.Interfaces.ITransaction
 {
 	public interface IPacketEntRepository
 	{
+		Task<List<PktMastDto>> GetAllPacketEnt(string PId, string Comp_Code);
 		Task<int> AddPacketEnt(PktMastDto packetEnt);
 		Task<int> UpdatePacketEnt(PktMastDto packetEnt);
 		Task<int> DeletePacketEnt(string PId, string Comp_Code);
