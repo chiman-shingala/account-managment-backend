@@ -175,8 +175,14 @@ namespace Acc.Services.Services.Transaction
 			}
 			else
 			{
-				dblRate = dblRap - (dblRap - dblPerTot / 100);
+				dblRate = dblRap - (dblRap * dblPerTot / 100);
 			}
+			var result = new RapDiscDetDto
+			{
+				PerTot = dblPerTot,
+				FinalRate = dblRate,
+				RapPrice = dblRap
+			};
 			if (returnDetail)
 			{
 				return new RapDiscDetDto
@@ -201,7 +207,7 @@ namespace Acc.Services.Services.Transaction
 					RapPrice = dblRap
 				};
 			}
-			return null;
+			return result;
 		}		
 		public async Task<int> AddPacketEnt(PktMastDto packetEnt)
 		{
@@ -214,6 +220,10 @@ namespace Acc.Services.Services.Transaction
 		public async Task<int> DeletePacketEnt(string PId,string Comp_Code)
 		{
 			return await _packetEntRepository.DeletePacketEnt(PId, Comp_Code);
+		}
+		public async Task<int> FindNewPId(string Comp_Code)
+		{
+			return await _packetEntRepository.FindNewPId(Comp_Code);
 		}
 	}
 }
