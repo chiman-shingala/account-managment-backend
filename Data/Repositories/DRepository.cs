@@ -97,6 +97,10 @@ namespace Acc.Data.Repositories
 			var result = await conn.ExecuteScalarAsync<T>(storeProc, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 			return result;
 		}
+		public async Task<int> ExecuteScalarAsyncQuery(string storeProc, object? param = null)
+		{
+			return await conn.ExecuteScalarAsync<int>(storeProc, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
+		}
 
 		public async Task<T?> ExecuteAsyncQueryWithJson<T>(string storeProc, string param)
 		{
@@ -110,7 +114,12 @@ namespace Acc.Data.Repositories
 		{
 			return await conn.QuerySingleOrDefaultAsync<T>(storedProcedure, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 		}
-
+		public IDbConnection GetOpenConnection()
+		{
+			var connection = new SqlConnection(conn.ConnectionString);
+			connection.Open();
+			return connection;
+		}
 		#region IDisposable Support
 
 		private bool disposedValue = false; // To detect redundant calls

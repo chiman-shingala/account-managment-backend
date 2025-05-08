@@ -13,5 +13,7 @@ namespace Acc.Data.Interfaces.ITransaction
 		Task<int> UpdatePacketEnt(PktMastDto packetEnt);
 		Task<int> DeletePacketEnt(string PId, string Comp_Code);
 		Task<int> PacketExists(string PId, string Comp_Code);
+		Task<int> UpdateCostCont(PktMastDto pktMastDto);
+		Task<int> FindNewPId(string Comp_Code);
 	}
 }

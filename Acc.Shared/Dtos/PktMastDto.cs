@@ -73,5 +73,6 @@ namespace Acc.Shared.Dtos
 		public string ParPId { get; set; } = null!;
 		public string PG_Code { get; set; } = string.Empty;
 		public string Reference { get; set; } = string.Empty;
+		public int AcYear { get; set; }
 	}
 }

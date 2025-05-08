@@ -28,6 +28,10 @@ namespace Acc.Api.Controllers.Transaction
 		[HttpPost("add-packet-ent")]
 		public async Task<IActionResult> AddPacketEnt([FromBody] PktMastDto packetEnt)
 		{
+			if(packetEnt.PId == string.Empty)
+			{
+				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, "Packet Id Is Required"));
+			}			
 			var result = await _packetEntService.AddPacketEnt(packetEnt);
 			if (result > 0)
 			{
@@ -100,6 +104,13 @@ namespace Acc.Api.Controllers.Transaction
 			{
 				return new JsonResult(new ApiResponse(false, HttpStatusCode.BadRequest, null, "Unknown error occurred while deleting the packet"));
 			}
+		}
+		[HttpPost("find-newPId")]
+		public async Task<IActionResult> FindNewPId([FromQuery] string Comp_Code)
+		{
+			var result = await _packetEntService.FindNewPId(Comp_Code);
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, result, CommonConstants.SUCCESS));
+
 		}
 	}
 }

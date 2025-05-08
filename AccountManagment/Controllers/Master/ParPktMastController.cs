@@ -20,9 +20,9 @@ namespace Acc.Api.Controllers.Master
 			_parPktMast = parPktMast;
 		}
 		[HttpGet("get-parPkt")]
-		public async Task<IActionResult> GetAllParPktMast()
+		public async Task<IActionResult> GetAllParPktMast([FromQuery] string Comp_Code)
 		{
-			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parPktMast.GetAllParPktMast(), CommonConstants.SUCCESS));
+			return new JsonResult(new ApiResponse(true, HttpStatusCode.OK, await _parPktMast.GetAllParPktMast(Comp_Code), CommonConstants.SUCCESS));
 		}
 		[HttpPost("add-parPkt")]
 		public async Task<IActionResult> AddParPktMast([FromBody] ParPktMastDto parPktMast)
