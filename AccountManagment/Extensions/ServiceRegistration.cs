@@ -136,6 +136,8 @@ namespace Acc.Api.Extensions
 			services.AddScoped<IPacketOpnService, PacketOpnService>();
 			services.AddScoped<IPurEntRepository, PurEntRepository>();
 			services.AddScoped<IPurEntService, PurEntService>();
+			services.AddScoped<IFloMastRepository,FloMastRepository>();
+			services.AddScoped<IFloMastService, FloMastService>();
 			return services;
 		}
 	}
