@@ -2,7 +2,7 @@
 using Acc.Services.Interfaces.Master;
 using Acc.Shared.Dtos;
 using Data.Models;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -10,6 +10,7 @@ namespace Acc.Api.Controllers.Master
 {
 	[Route("api/[controller]")]
 	[ApiController]
+	[Authorize]
 	public class FloMastController : ControllerBase
 	{
 		private readonly IFloMastService _floMast;
